@@ -1,0 +1,145 @@
+buildscript {
+  repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+  }
+
+  dependencies {
+    classpath 'org.akhikhl.gretty:gretty:+'
+    classpath 'org.hidetake:gradle-ssh-plugin:1.1.3'
+  }
+}
+
+allprojects  {
+  group = 'mx.com'
+  version = '1.0.0'
+  apply plugin: 'maven'
+  apply plugin: 'groovy'
+  compileJava.options.encoding = 'UTF-8'
+  compileTestJava.options.encoding = "UTF-8"
+}
+
+ext {
+  nameProject = 'spring-mvc'
+  springVersion = '4.3.22.RELEASE'
+  springGroup = 'org.springframework'
+}
+
+subprojects {
+  sourceCompatibility = 1.7
+  targetCompatibility = 1.7
+  repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+  }
+
+  dependencies {
+    def excludeModulesSpringFox = ['spring-web','spring-webmvc','spring-aop','spring-beans','spring-context','spring-core','jackson-annotations']
+    compile 'log4j:log4j:1.2.17'
+    compile "org.codehaus.groovy:groovy-all:2.4.16"
+    compile ('io.springfox:springfox-swagger2:2.9.2'){
+      excludeModulesSpringFox.each { excludeModule ->
+        exclude module:excludeModule
+      }
+    }
+    compile ('io.springfox:springfox-swagger-ui:2.9.2'){
+      excludeModulesSpringFox.each { excludeModule ->
+        exclude module:excludeModule
+      }
+    }
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.6.0'
+    testCompile 'junit:junit:4.12'
+  }
+}
+
+project(':core') {
+  dependencies {
+    compile project(':api')
+    compile "$springGroup:spring-context:$springVersion"
+    compile "$springGroup:spring-context-support:$springVersion"
+    compile "$springGroup:spring-orm:$springVersion"
+    compile 'com.oracle:ojdbc6:11.2.0.3'
+    compile "commons-dbcp:commons-dbcp:1.4"
+
+    testCompile "$springGroup:spring-test:$springVersion"
+    testCompile "org.mockito:mockito-all:1.9.5"
+    testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
+    testCompile 'org.spockframework:spock-spring:1.0-groovy-2.4'
+  }
+}
+
+project(':web') {
+  apply plugin: 'war'
+  apply plugin: "org.akhikhl.gretty"
+  apply plugin: 'org.hidetake.ssh'
+
+  def currentEnvironment = project.hasProperty("environment")?environment:"development"
+  def configurationDir = "${System.properties['user.home']}/.project_config"
+
+  dependencies {
+    compile project(':core')
+    compile "org.springframework:spring-webmvc:${springVersion}"
+  }
+
+  gretty {
+    jvmArgs = ["-Dlogging.root=${System.properties['user.home']}/.project_config/"]
+    httpPort = 8080
+    contextPath = "/${nameProject}"
+    servletContainer = 'jetty9'
+    serverConfigFile = 'src/test/resources/jetty.xml'
+    scanInterval = 10
+    dependencies {
+      gretty 'com.oracle:ojdbc6:11.2.0.3'
+    }
+  }
+
+  task copyWar(type: Copy, dependsOn: 'war') {
+    from 'build/libs/'
+    into '../'
+    rename("${nameProject}-${version}.war",
+           "${nameProject}.war")
+  }
+
+  war {
+    baseName = "${nameProject}"
+  }
+
+  task glassfishDeploy(type:Exec) {
+    workingDir "/u01/glassfish4/glassfish/bin"
+    def currentDirectory = System.getProperty("user.dir")
+    def completePath = "${currentDirectory}/${nameProject}.war"
+    commandLine "./asadmin", "--port", "4849", "--user", "admin", "--passwordfile", "/home/tomcat/glassfish_password", "deploy", "--force", "true", "${completePath}"
+  }
+
+  task settingLog4jProperties(type:Copy){
+    from configurationDir
+    into "src/main/resources/"
+    include "log4j-${currentEnvironment}-${nameProject}.properties"
+    rename { String fileName -> fileName.replace("-${currentEnvironment}-${nameProject}", '') }
+  }
+
+  remotes {
+    qa {
+      host = '10.31.22.22'
+      user = 'root'
+      identity = file("${System.properties['user.home']}/.ssh/id_rsa")
+    }
+  }
+
+  task glassfishDeployQA {
+    doLast {
+      ssh.run {
+        session(remotes.qa) {
+          put from: "${nameProject}.war", into: "."
+          put from: "deploy.sh", into: "."
+          execute "sh deploy.sh"
+        }
+      }
+    }
+  }
+
+  build.dependsOn 'copyWar'
+  processResources.dependsOn "settingLog4jProperties"
+}
