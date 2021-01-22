@@ -42,4 +42,19 @@ class BiFunctionServiceSpec extends Specification {
     []                     | []
   }
 
+  def "ordenar Java8 ordenando listas #_lista de #_result"() {
+    given:
+    BiFunctionService biFunctionService = new BiFunctionServiceImpl();
+    List<String> lista = _lista
+    when:
+    lista = biFunctionService.ordenarJava7(lista);
+    then:
+    lista == _result
+    where:
+    _lista                    | _result
+    ["5", "6", "3", "7", "2"] | ["2", "3", "5", "6", "7"]
+    ["5"]                     | ["5"]
+    []                     | []
+  }
+
 }
