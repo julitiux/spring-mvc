@@ -39,6 +39,7 @@ class BiFunctionServiceSpec extends Specification {
     _lista                    | _result
     ["5", "6", "3", "7", "2"] | ["2", "3", "5", "6", "7"]
     ["5"]                     | ["5"]
+    []                     | []
   }
 
 }
