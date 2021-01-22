@@ -28,4 +28,10 @@ public class BiFunctionServiceImpl implements BiFunctionService {
     return lista;
   }
 
+  @Override
+  public List<String> ordenarJava8(List<String> lista) {
+    Collections.sort(lista, (String o1, String o2) -> o1.compareTo(o2) );
+    return lista;
+  }
+
 }
