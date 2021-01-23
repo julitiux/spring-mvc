@@ -9,4 +9,6 @@ public interface CollectionService {
 
   public List<String> useRemoveIfJava7(List<String> list, String elementRemove);
   public List<String> useRemoveIfJava8(List<String> list, String elementRemove);
+
+  public List<String> useSortJava7(List<String> list);
 }

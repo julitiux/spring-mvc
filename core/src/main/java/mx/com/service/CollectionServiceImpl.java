@@ -42,5 +42,16 @@ public class CollectionServiceImpl implements CollectionService {
     list.removeIf(x-> x.equalsIgnoreCase(elementRemove));
     return list;
   }
-  
+
+  @Override
+  public List<String> useSortJava7(List<String> list) {
+    Collections.sort(list, new Comparator<String>() {
+      @Override
+      public int compare(String o1, String o2) {
+        return o1.compareTo(o2);
+      }
+    });
+    return list;
+  }
+
 }
