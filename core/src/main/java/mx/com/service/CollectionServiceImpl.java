@@ -12,7 +12,7 @@ public class CollectionServiceImpl implements CollectionService {
 
   @Override
   public void forEachJava7(List<String> list) {
-    for(String element : list){
+    for (String element : list) {
       System.out.println(element);
     }
   }
@@ -30,8 +30,8 @@ public class CollectionServiceImpl implements CollectionService {
   @Override
   public List<String> useRemoveIfJava7(List<String> list, String elementRemove) {
     Iterator<String> iterator = list.iterator();
-    while(iterator.hasNext()){
-      if(iterator.next().equalsIgnoreCase(elementRemove))
+    while (iterator.hasNext()) {
+      if (iterator.next().equalsIgnoreCase(elementRemove))
         iterator.remove();
     }
     return list;
@@ -39,7 +39,7 @@ public class CollectionServiceImpl implements CollectionService {
 
   @Override
   public List<String> useRemoveIfJava8(List<String> list, String elementRemove) {
-    list.removeIf(x-> x.equalsIgnoreCase(elementRemove));
+    list.removeIf(x -> x.equalsIgnoreCase(elementRemove));
     return list;
   }
 
@@ -51,6 +51,12 @@ public class CollectionServiceImpl implements CollectionService {
         return o1.compareTo(o2);
       }
     });
+    return list;
+  }
+
+  @Override
+  public List<String> useSortJava8(List<String> list) {
+    Collections.sort(list, ((o1, o2) -> o1.compareTo(o2)));
     return list;
   }
 
