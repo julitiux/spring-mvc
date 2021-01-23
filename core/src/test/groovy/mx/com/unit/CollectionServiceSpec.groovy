@@ -3,7 +3,9 @@ package mx.com.unit
 import mx.com.service.CollectionService
 import mx.com.service.CollectionServiceImpl
 import spock.lang.Specification
+import spock.lang.Unroll
 
+@Unroll
 class CollectionServiceSpec extends Specification {
 
   def "For Each java7"() {
@@ -77,4 +79,16 @@ class CollectionServiceSpec extends Specification {
     ['5', '4', '3', '2', '1'] | ['1', '2', '3', '4', '5']
   }
 
+  def "Use Sort Java8"() {
+    given:
+    CollectionService collectionService = new CollectionServiceImpl()
+    List<String> list = _list
+    when:
+    list = collectionService.useSortJava8(list)
+    then:
+    list == _result
+    where:
+    _list                     | _result
+    ['5', '4', '3', '2', '1'] | ['1', '2', '3', '4', '5']
+  }
 }
