@@ -28,7 +28,7 @@ public class StreamServiceImpl implements StreamService{
   }
 
   @Override
-  public List<String> counter(List<String> list) {
-    return list;
+  public Long counter(List<String> list) {
+    return list.stream().count();
   }
 }
