@@ -19,7 +19,7 @@ public class StreamServiceImpl implements StreamService{
 
   @Override
   public List<String> transformer(List<String> list) {
-    return list;
+    return list.stream().map(x -> Integer.parseInt(x) +1).map(Object::toString).collect(Collectors.toList());
   }
 
   @Override
