@@ -7,5 +7,5 @@ public interface StreamService {
   public List<String> sorter(List<String> list);
   public List<String> transformer(List<String> list);
   public List<String> limiter(List<String> list);
-  public List<String> counter(List<String> list);
+  public Long counter(List<String> list);
 }
