@@ -7,27 +7,27 @@ import java.util.List;
 @Service
 public class StreamServiceImpl implements StreamService{
   @Override
-  public void filter(List<String> list) {
+  public List<String> filter(List<String> list) {
 
   }
 
   @Override
-  public void sorter(List<String> list) {
+  public List<String> sorter(List<String> list) {
 
   }
 
   @Override
-  public void transformer(List<String> list) {
+  public List<String> transformer(List<String> list) {
 
   }
 
   @Override
-  public void limiter(List<String> list) {
+  public List<String> limiter(List<String> list) {
 
   }
 
   @Override
-  public void counter(List<String> list) {
+  public List<String> counter(List<String> list) {
 
   }
 }
