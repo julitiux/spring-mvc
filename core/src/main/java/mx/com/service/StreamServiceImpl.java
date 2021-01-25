@@ -14,7 +14,7 @@ public class StreamServiceImpl implements StreamService{
 
   @Override
   public List<String> sorter(List<String> list) {
-    return list;
+    return list.stream().sorted().collect(Collectors.toList());
   }
 
   @Override
