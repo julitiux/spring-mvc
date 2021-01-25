@@ -38,4 +38,20 @@ class StreamServiceSpec extends Specification {
     ['Mexico', 'Moscu', 'Italia', 'Brazil', 'EU'] | ['Brazil', 'EU', 'Italia', 'Mexico', 'Moscu']
   }
 
+  @Unroll
+  def"Map method to test unit test"(){
+    given:
+    List<String> list = _list
+    StreamService service = new StreamServiceImpl()
+    when:
+    println list
+    list = service.transformer(list)
+    println list
+    then:
+    list == _result
+    where:
+    _list                                         | _result
+    ['1','2','3','4','5','6','7','8','9'] | ['2','3','4','5','6','7','8','9','10']
+  }
+
 }
