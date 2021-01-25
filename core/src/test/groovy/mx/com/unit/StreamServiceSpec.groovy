@@ -23,7 +23,7 @@ class StreamServiceSpec extends Specification {
   }
 
   @Unroll
-  def"Unit Test method Stream Sorted with a list #_list and returned _#result"(){
+  def "Unit Test method Stream Sorted with a list #_list and returned _#result"() {
     given:
     List<String> list = _list
     StreamService service = new StreamServiceImpl()
@@ -39,7 +39,7 @@ class StreamServiceSpec extends Specification {
   }
 
   @Unroll
-  def"Map method to test unit test"(){
+  def "Map method to test unit test"() {
     given:
     List<String> list = _list
     StreamService service = new StreamServiceImpl()
@@ -51,7 +51,7 @@ class StreamServiceSpec extends Specification {
     list == _result
     where:
     _list                                         | _result
-    ['1','2','3','4','5','6','7','8','9'] | ['2','3','4','5','6','7','8','9','10']
+    ['1', '2', '3', '4', '5', '6', '7', '8', '9'] | ['2', '3', '4', '5', '6', '7', '8', '9', '10']
   }
 
 }
