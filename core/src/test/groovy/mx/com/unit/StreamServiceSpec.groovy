@@ -71,4 +71,20 @@ class StreamServiceSpec extends Specification {
     ['1', '2', '3', '4', '5', '6', '7', '8', '9'] | 2     | ['1', '2']
   }
 
+
+  @Unroll
+  def "Map method to limit unit test: #_list has #_size"() {
+    given:
+    List<String> list = _list
+    Long count
+    StreamService service = new StreamServiceImpl()
+    when:
+    count = service.counter(list)
+    then:
+    count == _size
+    where:
+    _list                                         | _size
+    ['1', '2', '3', '4', '5', '6', '7', '8', '9'] | 9
+  }
+
 }
