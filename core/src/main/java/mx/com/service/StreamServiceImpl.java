@@ -3,13 +3,13 @@ package mx.com.service;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class StreamServiceImpl implements StreamService{
   @Override
   public List<String> filter(List<String> list) {
-    list.stream().filter(x -> x.startsWith("M"));
-    return list;
+    return list.stream().filter(x -> x.startsWith("M")).collect(Collectors.toList());
   }
 
   @Override
