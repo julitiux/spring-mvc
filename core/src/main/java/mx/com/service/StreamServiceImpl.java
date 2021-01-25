@@ -24,7 +24,7 @@ public class StreamServiceImpl implements StreamService{
 
   @Override
   public List<String> limiter(List<String> list) {
-    return list;
+    return list.stream().limit(2).collect(Collectors.toList());
   }
 
   @Override
