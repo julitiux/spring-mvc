@@ -22,4 +22,20 @@ class StreamServiceSpec extends Specification {
 
   }
 
+  @Unroll
+  def"Unit Test method Stream Sorted with a list #_list and returned _#result"(){
+    given:
+    List<String> list = _list
+    StreamService service = new StreamServiceImpl()
+    when:
+    println list
+    list = service.sorter(list)
+    println list
+    then:
+    list == _result
+    where:
+    _list                                         | _result
+    ['Mexico', 'Moscu', 'Italia', 'Brazil', 'EU'] | ['Brazil', 'EU', 'Italia', 'Mexico', 'Moscu']
+  }
+
 }
