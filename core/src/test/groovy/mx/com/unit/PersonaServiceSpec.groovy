@@ -48,7 +48,21 @@ class PersonaServiceSpec extends Specification {
       println it.apellidoMaterno
       println it.correo
     }
-    response == personaList.sort{x,y -> x.nombre <=> y.nombre}
+    response == personaList.sort { x, y -> x.nombre <=> y.nombre }
+  }
+
+  def "Transformer a Personas to Upper"() {
+    given:
+    List<Persona> personaList = _personaList
+    List<Persona> response
+    PersonaService service = new PersonaServiceImpl()
+    when:
+    response = service.transformer(personaList)
+    then:
+    response.each {
+      println it.properties
+    }
+    
   }
 
 }
