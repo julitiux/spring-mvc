@@ -16,12 +16,19 @@ public class PersonaServiceImpl implements PersonaService {
 
   @Override
   public List<Persona> sorter(List<Persona> list) {
-    return list.stream().sorted((x,y) -> x.getNombre().compareTo(y.getNombre()) ).collect(Collectors.toList());
+    return list.stream().sorted((x, y) -> x.getNombre().compareTo(y.getNombre())).collect(Collectors.toList());
   }
 
   @Override
   public List<Persona> transformer(List<Persona> list) {
-    return list;
+    return list.stream().map(personaTemporal -> {
+      Persona persona = new Persona();
+      persona.setNombre(personaTemporal.getNombre().toUpperCase());
+      persona.setApellidoPaterno(personaTemporal.getApellidoPaterno().toUpperCase());
+      persona.setApellidoMaterno(personaTemporal.getApellidoMaterno().toUpperCase());
+      persona.setCorreo(personaTemporal.getCorreo().toUpperCase());
+      return persona;
+    }).collect(Collectors.toList());
   }
 
   @Override
