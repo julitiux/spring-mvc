@@ -62,7 +62,18 @@ class PersonaServiceSpec extends Specification {
     response.each {
       println it.properties
     }
-    
+
+  }
+
+  def "Get two elements of one list "() {
+    given:
+    List<Persona> personaList = _personaList
+    List<Persona> response
+    PersonaService service = new PersonaServiceImpl()
+    when:
+    response = service.limiter(personaList)
+    then:
+    response.size() == 2
   }
 
 }
