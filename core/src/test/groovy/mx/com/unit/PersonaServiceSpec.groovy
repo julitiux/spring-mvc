@@ -23,7 +23,7 @@ class PersonaServiceSpec extends Specification {
   ]
 
 
-  def ""() {
+  def "Filter a Personas by name"() {
     given:
     List<Persona> personaList = _personaList
     List<Persona> response
