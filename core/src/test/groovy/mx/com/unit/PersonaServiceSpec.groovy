@@ -34,4 +34,21 @@ class PersonaServiceSpec extends Specification {
     response.size() == 1
   }
 
+  def "Orderer a Personas "() {
+    given:
+    List<Persona> personaList = _personaList
+    List<Persona> response
+    PersonaService service = new PersonaServiceImpl()
+    when:
+    response = service.sorter(personaList)
+    then:
+    response.each {
+      println it.nombre
+      println it.apellidoPaterno
+      println it.apellidoMaterno
+      println it.correo
+    }
+    response == personaList.sort{x,y -> x.nombre <=> y.nombre}
+  }
+
 }
