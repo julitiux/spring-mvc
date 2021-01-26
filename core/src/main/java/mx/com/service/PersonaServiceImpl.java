@@ -16,7 +16,7 @@ public class PersonaServiceImpl implements PersonaService {
 
   @Override
   public List<Persona> sorter(List<Persona> list) {
-    return list;
+    return list.stream().sorted((x,y) -> x.getNombre().compareTo(y.getNombre()) ).collect(Collectors.toList());
   }
 
   @Override
