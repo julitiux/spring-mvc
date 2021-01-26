@@ -33,6 +33,6 @@ public class PersonaServiceImpl implements PersonaService {
 
   @Override
   public List<Persona> limiter(List<Persona> list) {
-    return list;
+    return list.stream().limit(2).collect(Collectors.toList());
   }
 }
