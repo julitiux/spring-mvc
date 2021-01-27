@@ -20,8 +20,9 @@ public class OptionalServiceImpl implements OptionalService {
   }
 
   @Override
-  public String orElseThrow(String value) {
-    return null;
+  public void orElseThrow(String value) {
+    Optional<String> optional = Optional.ofNullable(value);
+    optional.orElseThrow(NumberFormatException::new);
   }
 
   @Override
