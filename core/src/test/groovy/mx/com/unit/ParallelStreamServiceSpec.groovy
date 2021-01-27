@@ -18,4 +18,17 @@ class ParallelStreamServiceSpec extends Specification {
     _list << [['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']]
 
   }
+
+  def "Unit test of forEach with parallels functions"() {
+    given:
+    ParallelStreamService service = new ParallelStreamServiceImpl()
+    List<String> list = _list
+    when:
+    service.testParallelStream(list)
+    then:
+    true
+    where:
+    _list << [['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']]
+  }
+
 }
