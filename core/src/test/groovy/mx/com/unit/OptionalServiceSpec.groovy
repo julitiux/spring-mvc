@@ -39,5 +39,20 @@ class OptionalServiceSpec extends Specification {
     null           | "Sin valor"
   }
 
+  @Unroll
+  def "Unit test of function Optional with orElseThrow #_value | #_expectedException | #_expectedMessage"() {
+    given:
+    String value = _value
+    OptionalService service = new OptionalServiceImpl()
+    when:
+    service.orElseThrow(value)
+    then:
+    def error = thrown(_expectedException)
+    error.message == _expectedMessage
+    where:
+    _value | _expectedException    | _expectedMessage
+    null   | NumberFormatException | null
+  }
+
 
 }
