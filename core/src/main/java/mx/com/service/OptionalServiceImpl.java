@@ -15,10 +15,8 @@ public class OptionalServiceImpl implements OptionalService {
 
   @Override
   public String orElse(String value) {
-
     Optional<String> optional = Optional.ofNullable(value);
     return optional.orElse("Sin valor");
-
   }
 
   @Override
