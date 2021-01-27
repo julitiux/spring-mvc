@@ -8,17 +8,12 @@ import java.util.List;
 public class ParallelStreamServiceImpl implements ParallelStreamService{
 
   @Override
-  public List<String> addList() {
-    return null;
-  }
-
-  @Override
   public List<String> testStream() {
     return null;
   }
 
   @Override
-  public List<String> testParallel() {
+  public List<String> testParallelStream() {
     return null;
   }
 }
