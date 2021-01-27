@@ -16,6 +16,6 @@ public class ParallelStreamServiceImpl implements ParallelStreamService{
 
   @Override
   public void testParallelStream(List<String> list) {
-
+    list.parallelStream().forEach(System.out::println);
   }
 }
