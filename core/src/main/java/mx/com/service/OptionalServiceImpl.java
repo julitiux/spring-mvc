@@ -26,7 +26,8 @@ public class OptionalServiceImpl implements OptionalService {
   }
 
   @Override
-  public String idPresent(String value) {
-    return null;
+  public Boolean isPresent(String value) {
+    Optional<String> optional = Optional.ofNullable(value);
+    return optional.isPresent();
   }
 }
