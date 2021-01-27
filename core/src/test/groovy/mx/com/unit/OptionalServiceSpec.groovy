@@ -54,5 +54,21 @@ class OptionalServiceSpec extends Specification {
     null   | NumberFormatException | null
   }
 
+  @Unroll
+  def "Unit test of function Optiona isPresent like #_value | #_response"() {
+    given:
+    String value = _value
+    OptionalService service = new OptionalServiceImpl()
+    when:
+    Boolean response = service.isPresent(value)
+    then:
+    response == _response
+
+    where:
+    _value                  | _response
+    "Variable inicializada" | true
+    null                    | false  //VARIABLE SIN INICIARLIZAR
+  }
+
 
 }
