@@ -22,4 +22,13 @@ public class LambdaSintaxisServiceImpl {
     return instance.calculateAverage(number1,number2);
   }
 
+  public Double sintaxis4(Double number1, Double number2){
+    LambdaSintaxisService instance = (Double num1, Double num2) -> {
+      System.out.println(num1);
+      System.out.println(num2);
+      return (num1 + num2) / 2;
+    };
+    return instance.calculateAverage(number1,number2);
+  }
+
 }
