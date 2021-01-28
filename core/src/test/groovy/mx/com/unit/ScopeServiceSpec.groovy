@@ -7,7 +7,7 @@ import spock.lang.Unroll
 @Unroll
 class ScopeServiceSpec extends Specification {
 
-  def "Implementing unit test with methof localVariable with values #_number1 | #_number2 | #_response"() {
+  def "Implementing unit test with methof localVariable1 with values #_number1 | #_number2 | #_response"() {
     given:
     ScopeServiceImpl instance = new ScopeServiceImpl()
     Double number1 = _number1
