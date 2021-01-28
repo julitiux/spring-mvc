@@ -1,6 +1,6 @@
 package mx.com.service;
 
-public interface DefaultService {
+public interface DefaultMethodService {
   public void holaMundo();
   default public void defaulHolaMundo(){
     System.out.println("Hola Inmundo");
