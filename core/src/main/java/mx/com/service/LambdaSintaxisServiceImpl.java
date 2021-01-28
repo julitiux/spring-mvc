@@ -31,4 +31,9 @@ public class LambdaSintaxisServiceImpl {
     return instance.calculateAverage(number1,number2);
   }
 
+  public Double sintaxis5(Double number1, Double number2){
+    LambdaSintaxisService instance = (num1, num2) ->  (num1 + num2) / 2;
+    return instance.calculateAverage(number1,number2);
+  }
+
 }
