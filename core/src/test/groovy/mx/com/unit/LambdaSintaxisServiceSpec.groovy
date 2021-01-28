@@ -71,4 +71,20 @@ class LambdaSintaxisServiceSpec extends Specification {
     2        | 3        | 2.5
   }
 
+  @Unroll
+  def "Implement unit test with sintaxis5 lambda #_number1 | #_number2 | #_response"() {
+    given:
+    LambdaSintaxisServiceImpl clazz = new LambdaSintaxisServiceImpl()
+    Double number1 = _number1
+    Double number2 = _number2
+    Double response
+    when:
+    response = clazz.sintaxis5(number1, number2)
+    then:
+    response == _response
+    where:
+    _number1 | _number2 | _response
+    2        | 3        | 2.5
+  }
+
 }
