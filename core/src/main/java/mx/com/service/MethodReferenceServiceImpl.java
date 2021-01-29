@@ -10,6 +10,7 @@ public class MethodReferenceServiceImpl {
     System.out.println("I just said Hello");
   }
 
+  //Anonymous Function
   public String[] referenceMethodInstanceObjectRandom1(){
     String[] numbers = {"uno","dos","tres"};
     Arrays.sort(numbers, new Comparator<String>() {
@@ -18,6 +19,13 @@ public class MethodReferenceServiceImpl {
         return o1.compareTo(o2);
       }
     });
+    return numbers;
+  }
+
+  //Expresion lambda
+  public String[] referenceMethodInstanceObjectRandom2(){
+    String[] numbers = {"uno","dos","tres"};
+    Arrays.sort(numbers, (o1,o2) -> o1.compareTo(o2));
     return numbers;
   }
 
