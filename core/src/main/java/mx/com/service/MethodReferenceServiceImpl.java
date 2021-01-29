@@ -29,6 +29,13 @@ public class MethodReferenceServiceImpl {
     return numbers;
   }
 
+  //With method reference
+  public String[] referenceMethodInstanceObjectRandom3(){
+    String[] numbers = {"uno","dos","tres"};
+    Arrays.sort(numbers, String::compareTo);
+    return numbers;
+  }
+
   public void referenceMethodInstanceObjectSingular(){
   }
 
