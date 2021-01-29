@@ -15,8 +15,19 @@ public class MethodReferenceServiceImpl {
   public void referenceConstructor(){
   }
 
-  public void example1(){
+  //Los metodos referenciados no pueden enviar parametros
+
+  public void example1ReferenceMethodStatic(){
+    //with a expresion lambda
+    //Name of the class . name of the method
     MethodReferenceService instance = () -> MethodReferenceServiceImpl.referenceMethodStatic();
+    instance.saidHello();
+  }
+
+  public void example2ReferenceMethodStatic(){
+    //deleting expresion lambda
+    //Name of the class :: name of the method
+    MethodReferenceService instance = MethodReferenceServiceImpl::referenceMethodStatic;
     instance.saidHello();
   }
 
