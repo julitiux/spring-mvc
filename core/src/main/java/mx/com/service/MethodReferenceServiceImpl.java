@@ -65,7 +65,9 @@ public class MethodReferenceServiceImpl {
   }
 
   //With method reference
-  public void referenceConstructor3() {
+  public User referenceConstructor3(Long id, String username) {
+    UserService interfaceUser = User::new;
+    return interfaceUser.crear(id, username);
   }
 
   //Los metodos referenciados no pueden enviar parametros
