@@ -1,12 +1,24 @@
 package mx.com.service;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.Comparator;
+
 public class MethodReferenceServiceImpl {
 
   public static void referenceMethodStatic(){
     System.out.println("I just said Hello");
   }
 
-  public void referenceMethodInstanceObjectRandom(){
+  public String[] referenceMethodInstanceObjectRandom1(){
+    String[] numbers = {"uno","dos","tres"};
+    Arrays.sort(numbers, new Comparator<String>() {
+      @Override
+      public int compare(String o1, String o2) {
+        return o1.compareTo(o2);
+      }
+    });
+    return numbers;
   }
 
   public void referenceMethodInstanceObjectSingular(){
