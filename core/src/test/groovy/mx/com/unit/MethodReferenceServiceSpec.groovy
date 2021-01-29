@@ -9,7 +9,7 @@ class MethodReferenceServiceSpec extends Specification{
     given:
     MethodReferenceServiceImpl instance = new MethodReferenceServiceImpl()
     when:
-    instance.example1()
+    instance.example1ReferenceMethodStatic()
     then:
     true
   }
