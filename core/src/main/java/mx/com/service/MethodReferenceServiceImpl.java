@@ -1,5 +1,8 @@
 package mx.com.service;
 
+import mx.com.domain.Persona;
+import mx.com.domain.User;
+
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -46,7 +49,14 @@ public class MethodReferenceServiceImpl {
     inst.saidHello();
   }
 
-  public void referenceConstructor1(){
+  public User referenceConstructor1(Long id, String username){
+    UserService interfaceUser = new UserService() {
+      @Override
+      public User crear(Long id, String username) {
+        return new User(id, username);
+      }
+    };
+    return interfaceUser.crear(id, username);
   }
 
   public void referenceConstructor2(){
