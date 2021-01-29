@@ -89,5 +89,21 @@ class MethodReferenceServiceSpec extends Specification {
     1L  | 'j.ramirez008' | new User(1L, 'j.ramirez008')
   }
 
+  def "Implement unit test method with reference a contructor 2 #_id | #_username  | #_result"() {
+    given:
+    MethodReferenceServiceImpl instance = new MethodReferenceServiceImpl()
+    Long id = _id
+    String username = _username
+    def response
+    when:
+    response = instance.referenceConstructor2(id, username)
+    then:
+    response.id == _result.id
+    response.username == _result.username
+    where:
+    _id | _username      | _result
+    1L  | 'j.ramirez008' | new User(1L, 'j.ramirez008')
+  }
+
 
 }
