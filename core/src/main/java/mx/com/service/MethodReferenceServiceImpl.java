@@ -36,7 +36,14 @@ public class MethodReferenceServiceImpl {
     return numbers;
   }
 
+  public void sayHi(){
+    System.out.println("Hola INHUMAN");
+  }
+
   public void referenceMethodInstanceObjectSingular(){
+    MethodReferenceServiceImpl instance = new MethodReferenceServiceImpl();
+    MethodReferenceService inst = instance::sayHi;
+    inst.saidHello();
   }
 
   public void referenceConstructor(){
