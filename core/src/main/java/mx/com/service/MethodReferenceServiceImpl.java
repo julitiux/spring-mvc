@@ -47,6 +47,7 @@ public class MethodReferenceServiceImpl {
     inst.saidHello();
   }
 
+  //Anonymous Function
   public User referenceConstructor1(Long id, String username) {
     UserService interfaceUser = new UserService() {
       @Override
@@ -57,9 +58,13 @@ public class MethodReferenceServiceImpl {
     return interfaceUser.crear(id, username);
   }
 
-  public void referenceConstructor2() {
+  //Expresion lambda
+  public User referenceConstructor2(Long id, String username) {
+    UserService interfaceUser = (x, y) -> new User(x, y);
+    return interfaceUser.crear(id, username);
   }
 
+  //With method reference
   public void referenceConstructor3() {
   }
 
