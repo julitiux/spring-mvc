@@ -46,7 +46,13 @@ public class MethodReferenceServiceImpl {
     inst.saidHello();
   }
 
-  public void referenceConstructor(){
+  public void referenceConstructor1(){
+  }
+
+  public void referenceConstructor2(){
+  }
+
+  public void referenceConstructor3(){
   }
 
   //Los metodos referenciados no pueden enviar parametros
