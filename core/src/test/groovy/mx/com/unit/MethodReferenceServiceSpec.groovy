@@ -49,6 +49,17 @@ class MethodReferenceServiceSpec extends Specification{
     _response << [['dos','tres','uno']]
   }
 
+  def"Implement unit test of reference Method Instance Object Random 3"(){
+    given:
+    MethodReferenceServiceImpl instance = new MethodReferenceServiceImpl()
+    List response
+    when:
+    response = instance.referenceMethodInstanceObjectRandom3()
+    then:
+    response == _response
+    where:
+    _response << [['dos','tres','uno']]
+  }
 
 
 }
