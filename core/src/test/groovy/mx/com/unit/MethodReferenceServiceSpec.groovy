@@ -61,5 +61,14 @@ class MethodReferenceServiceSpec extends Specification{
     _response << [['dos','tres','uno']]
   }
 
+  def"Implement unit test of reference Method Instance Object Singular"(){
+    given:
+    MethodReferenceServiceImpl instance = new MethodReferenceServiceImpl()
+    when:
+    instance.referenceMethodInstanceObjectSingular()
+    then:
+    true
+  }
+
 
 }
