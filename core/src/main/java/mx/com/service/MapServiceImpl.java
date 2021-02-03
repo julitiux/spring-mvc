@@ -28,12 +28,13 @@ public class MapServiceImpl implements MapService {
 
   @Override
   public Map<Integer, String> insertIfAbsent(Map<Integer, String> map, Integer key, String value) {
-    map.putIfAbsent(key,value);
+    map.putIfAbsent(key, value);
     return map;
   }
 
   @Override
-  public Map<Integer, String> operateIfPresent() {
-    return null;
+  public Map<Integer, String> operateIfPresent(Map<Integer, String> map) {
+    map.computeIfPresent(3, (k, v) -> k + v);
+    return map;
   }
 }
