@@ -33,8 +33,8 @@ public class MapServiceImpl implements MapService {
   }
 
   @Override
-  public Map<Integer, String> operateIfPresent(Map<Integer, String> map) {
-    map.computeIfPresent(3, (k, v) -> k + v);
+  public Map<Integer, String> operateIfPresent(Map<Integer, String> map, Integer key, String value) {
+    map.computeIfPresent(key, (k, v) -> k + v);
     return map;
   }
 }
