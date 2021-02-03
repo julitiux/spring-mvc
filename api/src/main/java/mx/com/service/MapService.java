@@ -9,4 +9,5 @@ public interface MapService {
   public Map<Integer, String> collect(Map<Integer, String> map);
   public Map<Integer, String> insertIfAbsent(Map<Integer, String> map, Integer key, String value);
   public Map<Integer, String> operateIfPresent(Map<Integer, String> map, Integer key, String value);
+  public String getOrDefault(Map<Integer, String> map, Integer key);
 }
