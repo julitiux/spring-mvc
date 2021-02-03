@@ -52,5 +52,24 @@ class MapServiceSpec extends Specification {
 
   }
 
+  def "Implementation a unit test of method computeIfPresent using #_map | #_response "() {
+    given:
+    Map map = _map
+    Integer key = _key
+    String value = _value
+    Map reponse
+    MapService service = new MapServiceImpl()
+    when:
+    reponse = service.operateIfPresent(map, key, value);
+    then:
+    reponse == _response
+
+    where:
+    _map                  | _key | _value      | _response
+    [1: 'uno']            | 1    | null        | [:]
+    [1: 'uno', 3: 'tres'] | 1    | null        | [3: 'tres']
+    [1: 'uno', 3: 'tres'] | 3    | "tres tres" | [1: 'uno', 3: 'tres tres']
+
+  }
 
 }
