@@ -5,8 +5,10 @@ import java.util.Map;
 public class MapServiceImpl implements MapService {
 
   @Override
-  public Map<Integer, String> printJava7(Map<Integer, String> map) {
-    return null;
+  public void printJava7(Map<Integer, String> map) {
+    for (Map.Entry<Integer, String> entry : map.entrySet()) {
+      System.out.println("key: " + entry.getKey() + " Value: " + entry.getValue());
+    }
   }
 
   @Override
