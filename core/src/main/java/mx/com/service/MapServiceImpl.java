@@ -28,7 +28,8 @@ public class MapServiceImpl implements MapService {
 
   @Override
   public Map<Integer, String> insertIfAbsent(Map<Integer, String> map) {
-    return null;
+    map.putIfAbsent(2,"dos dos");
+    return map;
   }
 
   @Override
