@@ -72,4 +72,26 @@ class MapServiceSpec extends Specification {
 
   }
 
+  def "Implementation a unit test of method getOrDefault using #_map | #_response "() {
+    given:
+    Map map = _map
+    Integer key = _key
+    String reponse
+    MapService service = new MapServiceImpl()
+    when:
+    reponse = service.getOrDefault(map, key);
+    then:
+    reponse == _response
+
+    where:
+    _map                  | _key | _response
+    [1: 'uno']            | 1    | "uno"
+    [1: 'uno', 3: 'tres'] | 1    | "uno"
+    [1: 'uno', 3: 'tres'] | 3    | "tres"
+    [1: 'uno', 3: 'tres'] | 2    | "Don't has value"
+    [:]                   | 1    | "Don't has value"
+    [:]                   | 100  | "Don't has value"
+
+  }
+
 }
