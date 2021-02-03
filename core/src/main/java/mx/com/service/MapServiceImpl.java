@@ -37,4 +37,9 @@ public class MapServiceImpl implements MapService {
     map.computeIfPresent(key, (k, v) -> value);
     return map;
   }
+
+  @Override
+  public String getOrDefault(Map<Integer, String> map, Integer key) {
+    return map.getOrDefault(key, "Don't has value");
+  }
 }
