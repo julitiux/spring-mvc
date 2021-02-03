@@ -12,8 +12,13 @@ public class MapServiceImpl implements MapService {
   }
 
   @Override
-  public Map<Integer, String> printJava8(Map<Integer, String> map) {
-    return null;
+  public void printJava8(Map<Integer, String> map) {
+    map.forEach((k, v) -> System.out.println("key: " + k + " Value:" + v));
+  }
+
+  @Override
+  public void printJava8_1(Map<Integer, String> map) {
+    map.entrySet().forEach(System.out::println);
   }
 
   @Override
