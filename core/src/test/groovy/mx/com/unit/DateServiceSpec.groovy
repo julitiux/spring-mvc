@@ -80,20 +80,34 @@ class DateServiceSpec extends Specification {
     LocalTime.MIN          | LocalTime.MAX          | true
   }
 
-  def "Test unit#_startTime isBefore #_endTime"() {
+  def "Test unit#_startTime isBefore #_endTime is #_responseIsBefore"() {
     given:
     LocalTime startTime = _startTime
     LocalTime endTime = _endTime
     expect:
     startTime.isBefore(endTime) == _responseIsBefore
+    where:
+    _startTime             | _endTime               | _responseIsBefore
+    LocalTime.of(1, 50, 0) | LocalTime.now()        | true
+    LocalTime.now()        | LocalTime.of(1, 50, 0) | false
+    LocalTime.now()        | LocalTime.now()        | true
+    LocalTime.MAX          | LocalTime.MIN          | false
+    LocalTime.MIN          | LocalTime.MAX          | true
+  }
+
+  def "Test unit#_startTime isAfter #_endTime is #_responseIsAfter"() {
+    given:
+    LocalTime startTime = _startTime
+    LocalTime endTime = _endTime
+    expect:
     startTime.isAfter(endTime) == _responseIsAfter
     where:
-    _startTime             | _endTime               | _responseIsBefore | _responseIsAfter
-    LocalTime.of(1, 50, 0) | LocalTime.now()        | true              | false
-    LocalTime.now()        | LocalTime.of(1, 50, 0) | false             | true
-    LocalTime.now()        | LocalTime.now()        | true              | false
-    LocalTime.MAX          | LocalTime.MIN          | false             | true
-    LocalTime.MIN          | LocalTime.MAX          | true              | false
+    _startTime             | _endTime               | _responseIsAfter
+    LocalTime.of(1, 50, 0) | LocalTime.now()        | false
+    LocalTime.now()        | LocalTime.of(1, 50, 0) | true
+    LocalTime.now()        | LocalTime.now()        | false
+    LocalTime.MAX          | LocalTime.MIN          | true
+    LocalTime.MIN          | LocalTime.MAX          | false
   }
 
 }
