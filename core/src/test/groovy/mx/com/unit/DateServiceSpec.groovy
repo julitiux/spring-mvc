@@ -7,6 +7,7 @@ import spock.lang.Specification
 import spock.lang.Unroll
 
 import java.time.LocalDate
+import java.time.LocalTime
 
 @Unroll
 class DateServiceSpec extends Specification {
@@ -59,6 +60,24 @@ class DateServiceSpec extends Specification {
     LocalDate endDate = LocalDate.now();
     expect:
     !startDate.isAfter(endDate)
+  }
+
+  def "Implement a test unit of the method comparteTwoTimesInJava8 #_startTime isBefore #_endTime"() {
+    given:
+    LocalTime startTime = _startTime
+    LocalTime endTime = _endTime
+    Boolean response
+    when:
+    response = service.comparteTwoTimesInJava8(startTime, endTime)
+    then:
+    response == _response
+    where:
+    _startTime             | _endTime               | _response
+    LocalTime.of(1, 50, 0) | LocalTime.now()        | true
+    LocalTime.now()        | LocalTime.of(1, 50, 0) | false
+    LocalTime.now()        | LocalTime.now()        | true
+    LocalTime.MAX          | LocalTime.MIN          | false
+    LocalTime.MIN          | LocalTime.MAX          | true
   }
 
 }
