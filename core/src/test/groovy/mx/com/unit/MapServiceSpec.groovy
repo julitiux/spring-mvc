@@ -113,7 +113,26 @@ class MapServiceSpec extends Specification {
     [1: 'uno']                                               | 'uno'  | [1: 'uno']
     [1: 'uno']                                               | 'un'   | [1: 'uno']
     [1: 'uno', 2: 'dos', 3: 'tres', 4: 'cuatro', 5: 'cinco'] | 'o'    | [1: 'uno', 2: 'dos', 4: 'cuatro', 5: 'cinco']
+  }
 
+  def "Implementation a unit test of method collect_v2 using #_map | #_response "() {
+    given:
+    Map map = _map
+    String value = _value
+    Map reponse
+    MapService service = new MapServiceImpl()
+    when:
+    reponse = service.collect_v2(map, value);
+    then:
+    reponse == _response
+
+    where:
+    _map                                                     | _value | _response
+    [:]                                                      | 'any'  | [:]
+    [1: 'uno', 3: 'tres']                                    | 'dos'  | [:]
+    [1: 'uno']                                               | 'uno'  | [1: 'uno']
+    [1: 'uno']                                               | 'un'   | [1: 'uno']
+    [1: 'uno', 2: 'dos', 3: 'tres', 4: 'cuatro', 5: 'cinco'] | 'o'    | [1: 'uno', 2: 'dos', 4: 'cuatro', 5: 'cinco']
   }
 
 }
