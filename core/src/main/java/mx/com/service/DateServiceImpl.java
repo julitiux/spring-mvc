@@ -3,6 +3,7 @@ package mx.com.service;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Calendar;
 
 @Service
@@ -19,6 +20,11 @@ public class DateServiceImpl implements DateService {
   @Override
   public Boolean comparteTwoDatesInJava8(LocalDate startDate, LocalDate endDate) {
     return startDate.isBefore(endDate);
+  }
+
+  @Override
+  public Boolean comparteTwoTimesInJava8(LocalTime startTime, LocalTime endTime) {
+    return startTime.isBefore(endTime);
   }
 
 }
