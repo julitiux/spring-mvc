@@ -1,6 +1,7 @@
 package mx.com.service;
 
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class MapServiceImpl implements MapService {
 
@@ -22,8 +23,17 @@ public class MapServiceImpl implements MapService {
   }
 
   @Override
-  public Map<Integer, String> collect(Map<Integer, String> map) {
-    return null;
+  public Map<Integer, String> collect_v1(Map<Integer, String> map, String value) {
+    return map.entrySet().stream()
+      .filter( entry -> entry.getValue().contains(value) )
+      .collect(Collectors.toMap(p -> p.getKey(), p -> p.getValue()));
+  }
+
+  @Override
+  public Map<Integer, String> collect_v2(Map<Integer, String> map, String value) {
+    return map.entrySet().stream()
+      .filter( entry -> entry.getValue().contains(value) )
+      .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
   }
 
   @Override
