@@ -129,4 +129,19 @@ class DateServiceSpec extends Specification {
     LocalDateTime.MIN                       | LocalDateTime.MAX                       | true
   }
 
+  def "#_startDateTime isBefore #_endDateTime is #_response"() {
+    given:
+    LocalDateTime startDateTime = _startDateTime
+    LocalDateTime endDateTime = _endDateTime
+    expect:
+    startDateTime.isBefore(endDateTime) == _response
+    where:
+    _startDateTime                          | _endDateTime                            | _response
+    LocalDateTime.of(1984, 5, 19, 1, 50, 0) | LocalDateTime.now()                     | true
+    LocalDateTime.now()                     | LocalDateTime.of(1984, 5, 19, 1, 50, 0) | false
+    LocalDateTime.now()                     | LocalDateTime.now()                     | true
+    LocalDateTime.MAX                       | LocalDateTime.MIN                       | false
+    LocalDateTime.MIN                       | LocalDateTime.MAX                       | true
+  }
+
 }
