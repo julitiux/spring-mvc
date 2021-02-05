@@ -61,4 +61,10 @@ public class DateServiceImpl implements DateService {
     return dateFormat.parse(dateString);
   }
 
+  @Override
+  public String formatDateJava7(Date date) {
+    DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss a");
+    return dateFormat.format(date);
+  }
+
 }
