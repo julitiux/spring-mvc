@@ -56,14 +56,9 @@ public class DateServiceImpl implements DateService {
   }
 
   @Override
-  public Date convertStringToDate(String dateString) {
+  public Date convertStringToDate(String dateString) throws ParseException {
     DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-    Date dateConverted = null;
-    try {
-      dateConverted = dateFormat.parse(dateString);
-    } catch (ParseException e) {
-      e.printStackTrace();
-    }
+    Date dateConverted = dateFormat.parse(dateString);
     System.out.println(dateConverted);
     return dateConverted;
   }
