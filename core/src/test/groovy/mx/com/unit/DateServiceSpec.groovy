@@ -195,4 +195,18 @@ class DateServiceSpec extends Specification {
   }
 
 
+  def "Convert String date to Dates Java8"() {
+    given:
+    String date = _stringDate
+    LocalDate response
+    when:
+    response = service.convertStringToDateJava8(date)
+    then:
+    response.toString() == _response
+    where:
+    _stringDate  | _response
+    '19/05/1984' | new Date(84, 04, 19).format("yyyy-MM-dd")
+    '01/05/1984' | new Date(84, 04, 01).format("yyyy-MM-dd")
+  }
+
 }
