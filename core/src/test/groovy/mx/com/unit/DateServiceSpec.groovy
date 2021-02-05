@@ -174,7 +174,7 @@ class DateServiceSpec extends Specification {
     String date = _stringDate
     Date response
     when:
-    response = service.convertStringToDate(date)
+    response = service.convertStringToDateJava7(date)
     then:
     response == _response
     where:

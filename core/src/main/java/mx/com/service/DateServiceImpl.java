@@ -56,7 +56,7 @@ public class DateServiceImpl implements DateService {
   }
 
   @Override
-  public Date convertStringToDate(String dateString) throws ParseException {
+  public Date convertStringToDateJava7(String dateString) throws ParseException {
     DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     return dateFormat.parse(dateString);
   }
