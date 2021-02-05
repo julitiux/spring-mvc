@@ -144,4 +144,21 @@ class DateServiceSpec extends Specification {
     LocalDateTime.MIN                       | LocalDateTime.MAX                       | true
   }
 
+  def "Count Years anios java7"() {
+    given:
+    Calendar startCalendar = _startCalendar
+    Calendar endCalendar = _endCalendar
+    Integer response = 0
+    when:
+    println startCalendar.set(1984, 4, 19)
+    println endCalendar
+    response = service.countYearsJava7(startCalendar, endCalendar)
+    then:
+    response == _response
+    where:
+    _startCalendar         | _endCalendar           | _response
+    Calendar.getInstance() | Calendar.getInstance() | 36
+
+  }
+
 }
