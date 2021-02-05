@@ -67,4 +67,14 @@ public class DateServiceImpl implements DateService {
     return dateFormat.format(date);
   }
 
+  @Override
+  public Date convertStringToDateJava8(String dateString) throws ParseException {
+    return null;
+  }
+
+  @Override
+  public String formatDateJava8(Date date) {
+    return null;
+  }
+
 }
