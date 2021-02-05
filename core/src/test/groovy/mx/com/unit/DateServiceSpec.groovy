@@ -182,5 +182,17 @@ class DateServiceSpec extends Specification {
     '19/05/1984' | new Date(84, 04, 19)
   }
 
+  def "Format Date #_date to String Java7"() {
+    given:
+    Date date = _date
+    String response
+    when:
+    response = service.formatDateJava7(date)
+    then:
+    response
+    where:
+    _date << [Calendar.getInstance().getTime()]
+  }
+
 
 }
