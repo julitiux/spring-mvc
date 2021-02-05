@@ -2,11 +2,15 @@ package mx.com.service;
 
 import org.springframework.stereotype.Service;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Period;
 import java.util.Calendar;
+import java.util.Date;
 
 @Service
 public class DateServiceImpl implements DateService {
@@ -49,6 +53,19 @@ public class DateServiceImpl implements DateService {
   @Override
   public Period countYearsJava8(LocalDate dateStart, LocalDate dateEnd) {
     return Period.between(dateStart, dateEnd);
+  }
+
+  @Override
+  public Date convertStringToDate(String dateString) {
+    DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    Date dateConverted = null;
+    try {
+      dateConverted = dateFormat.parse(dateString);
+    } catch (ParseException e) {
+      e.printStackTrace();
+    }
+    System.out.println(dateConverted);
+    return dateConverted;
   }
 
 }
