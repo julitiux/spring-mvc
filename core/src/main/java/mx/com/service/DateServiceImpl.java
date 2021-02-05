@@ -33,4 +33,16 @@ public class DateServiceImpl implements DateService {
     return startDateTime.isBefore(endDateTime);
   }
 
+  @Override
+  public Integer countYearsJava7(Calendar starCalendar, Calendar endCalendar) {
+    Integer anios = 0;
+    while (starCalendar.before(endCalendar)) {
+      starCalendar.add(Calendar.YEAR, 1);
+      if (starCalendar.before(endCalendar)) {
+        anios++;
+      }
+    }
+    return anios;
+  }
+
 }
