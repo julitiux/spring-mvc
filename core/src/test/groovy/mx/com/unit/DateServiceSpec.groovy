@@ -169,4 +169,22 @@ class DateServiceSpec extends Specification {
     LocalDate.of(1984, 5, 19) | LocalDate.now() | 36             | 8               | 17
   }
 
+
+  def"Convert String date to Dates Java7"(){
+
+    given:
+    String date = '19/05/1984'
+    Date response
+    when:
+    response = service.convertStringToDate(date)
+    then:
+    println response
+
+
+
+  }
+
+
+
+
 }
