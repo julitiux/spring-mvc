@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Period;
 import java.util.Calendar;
+import java.util.Date;
 
 public interface DateService {
   public void dateJava7();
@@ -14,4 +15,6 @@ public interface DateService {
 
   public Integer countYearsJava7(Calendar starCalendar, Calendar endCalendar);
   public Period countYearsJava8(LocalDate dateStart, LocalDate dateEnd);
+
+  public Date convertStringToDate(String dateString);
 }
