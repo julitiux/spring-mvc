@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.Period;
 import java.util.Calendar;
 
 @Service
@@ -43,6 +44,11 @@ public class DateServiceImpl implements DateService {
       }
     }
     return anios;
+  }
+
+  @Override
+  public Period countYearsJava8(LocalDate dateStart, LocalDate dateEnd) {
+    return Period.between(dateStart, dateEnd);
   }
 
 }
