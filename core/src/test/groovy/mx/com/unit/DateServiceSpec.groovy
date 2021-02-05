@@ -1,6 +1,5 @@
 package mx.com.unit
 
-
 import mx.com.service.DateServiceImpl
 import spock.lang.Shared
 import spock.lang.Specification
@@ -170,21 +169,18 @@ class DateServiceSpec extends Specification {
   }
 
 
-  def"Convert String date to Dates Java7"(){
-
+  def "Convert String date to Dates Java7"() {
     given:
-    String date = '19/05/1984'
+    String date = _stringDate
     Date response
     when:
     response = service.convertStringToDate(date)
     then:
-    println response
-
-
-
+    response == _response
+    where:
+    _stringDate  | _response
+    '19/05/1984' | new Date(84, 04, 19)
   }
-
-
 
 
 }
