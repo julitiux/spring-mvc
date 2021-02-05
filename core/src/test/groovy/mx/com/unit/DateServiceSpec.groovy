@@ -209,4 +209,21 @@ class DateServiceSpec extends Specification {
     '01/05/1984' | new Date(84, 04, 01).format("yyyy-MM-dd")
   }
 
+  def "Format Date #_date to String Java8"() {
+    given:
+    String dateString = _dateString
+    String patterDate = _patterDate
+    String formatter = _formatter
+    String response
+    when:
+    response = service.formatDateJava8(dateString, patterDate, formatter)
+    then:
+    response == _response
+    where:
+    _dateString  | _patterDate  | _formatter | _response
+    '19/05/1984' | "dd/MM/yyyy" | "ddMMyyyy" | "19051984"
+    '12/12/1212' | "dd/MM/yyyy" | "ddMMyyyy" | "12121212"
+
+  }
+
 }
