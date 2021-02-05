@@ -147,18 +147,16 @@ class DateServiceSpec extends Specification {
   def "Count Years anios java7"() {
     given:
     Calendar startCalendar = _startCalendar
+    startCalendar.set(1984, 5, 19)
     Calendar endCalendar = _endCalendar
-    Integer response = 0
+    Integer response
     when:
-    println startCalendar.set(1984, 4, 19)
-    println endCalendar
     response = service.countYearsJava7(startCalendar, endCalendar)
     then:
     response == _response
     where:
     _startCalendar         | _endCalendar           | _response
     Calendar.getInstance() | Calendar.getInstance() | 36
-
   }
 
 }
