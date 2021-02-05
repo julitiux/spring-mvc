@@ -1,5 +1,6 @@
 package mx.com.service;
 
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -16,5 +17,5 @@ public interface DateService {
   public Integer countYearsJava7(Calendar starCalendar, Calendar endCalendar);
   public Period countYearsJava8(LocalDate dateStart, LocalDate dateEnd);
 
-  public Date convertStringToDate(String dateString);
+  public Date convertStringToDate(String dateString) throws ParseException;
 }
