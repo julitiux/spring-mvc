@@ -19,4 +19,7 @@ public interface DateService {
 
   public Date convertStringToDateJava7(String dateString) throws ParseException;
   public String formatDateJava7(Date date);
+
+  public Date convertStringToDateJava8(String dateString) throws ParseException;
+  public String formatDateJava8(Date date);
 }
