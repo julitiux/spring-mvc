@@ -75,8 +75,11 @@ public class DateServiceImpl implements DateService {
   }
 
   @Override
-  public String formatDateJava8(Date date) {
-    return null;
+  public String formatDateJava8(String dateString, String patterDate, String formatter) {
+    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    LocalDate localDate = LocalDate.parse(dateString, dateTimeFormatter);
+    dateTimeFormatter = DateTimeFormatter.ofPattern("ddMMyyyy");
+    return dateTimeFormatter.format(localDate);
   }
 
 }
