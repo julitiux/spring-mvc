@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -68,8 +69,9 @@ public class DateServiceImpl implements DateService {
   }
 
   @Override
-  public Date convertStringToDateJava8(String dateString) throws ParseException {
-    return null;
+  public LocalDate convertStringToDateJava8(String dateString) throws ParseException {
+    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    return LocalDate.parse(dateString, dateTimeFormatter);
   }
 
   @Override
