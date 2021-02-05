@@ -21,5 +21,5 @@ public interface DateService {
   public String formatDateJava7(Date date);
 
   public LocalDate convertStringToDateJava8(String dateString) throws ParseException;
-  public String formatDateJava8(Date date);
+  public String formatDateJava8(String dateString, String patterDate, String formatter);
 }
