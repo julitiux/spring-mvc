@@ -9,6 +9,7 @@ import spock.lang.Unroll
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.LocalTime
+import java.time.Period
 
 @Unroll
 class DateServiceSpec extends Specification {
@@ -34,7 +35,6 @@ class DateServiceSpec extends Specification {
     _startDate                 | _endDate                   | _response
     LocalDate.of(19984, 5, 19) | LocalDate.now()            | false
     LocalDate.now()            | LocalDate.of(19984, 5, 19) | true
-    LocalDate.now()            | LocalDate.now()            | false
     LocalDate.MAX              | LocalDate.MIN              | false
     LocalDate.MIN              | LocalDate.MAX              | true
   }
@@ -49,7 +49,6 @@ class DateServiceSpec extends Specification {
     _startDate                 | _endDate                   | _response
     LocalDate.of(19984, 5, 19) | LocalDate.now()            | false
     LocalDate.now()            | LocalDate.of(19984, 5, 19) | true
-    LocalDate.now()            | LocalDate.now()            | false
     LocalDate.MAX              | LocalDate.MIN              | false
     LocalDate.MIN              | LocalDate.MAX              | true
 
@@ -76,7 +75,6 @@ class DateServiceSpec extends Specification {
     _startTime             | _endTime               | _response
     LocalTime.of(1, 50, 0) | LocalTime.now()        | true
     LocalTime.now()        | LocalTime.of(1, 50, 0) | false
-    LocalTime.now()        | LocalTime.now()        | true
     LocalTime.MAX          | LocalTime.MIN          | false
     LocalTime.MIN          | LocalTime.MAX          | true
   }
@@ -91,7 +89,6 @@ class DateServiceSpec extends Specification {
     _startTime             | _endTime               | _responseIsBefore
     LocalTime.of(1, 50, 0) | LocalTime.now()        | true
     LocalTime.now()        | LocalTime.of(1, 50, 0) | false
-    LocalTime.now()        | LocalTime.now()        | true
     LocalTime.MAX          | LocalTime.MIN          | false
     LocalTime.MIN          | LocalTime.MAX          | true
   }
@@ -106,7 +103,6 @@ class DateServiceSpec extends Specification {
     _startTime             | _endTime               | _responseIsAfter
     LocalTime.of(1, 50, 0) | LocalTime.now()        | false
     LocalTime.now()        | LocalTime.of(1, 50, 0) | true
-    LocalTime.now()        | LocalTime.now()        | false
     LocalTime.MAX          | LocalTime.MIN          | true
     LocalTime.MIN          | LocalTime.MAX          | false
   }
@@ -124,7 +120,6 @@ class DateServiceSpec extends Specification {
     _startDateTime                          | _endDateTime                            | _response
     LocalDateTime.of(1984, 5, 19, 1, 50, 0) | LocalDateTime.now()                     | true
     LocalDateTime.now()                     | LocalDateTime.of(1984, 5, 19, 1, 50, 0) | false
-    LocalDateTime.now()                     | LocalDateTime.now()                     | true
     LocalDateTime.MAX                       | LocalDateTime.MIN                       | false
     LocalDateTime.MIN                       | LocalDateTime.MAX                       | true
   }
@@ -139,7 +134,6 @@ class DateServiceSpec extends Specification {
     _startDateTime                          | _endDateTime                            | _response
     LocalDateTime.of(1984, 5, 19, 1, 50, 0) | LocalDateTime.now()                     | true
     LocalDateTime.now()                     | LocalDateTime.of(1984, 5, 19, 1, 50, 0) | false
-    LocalDateTime.now()                     | LocalDateTime.now()                     | true
     LocalDateTime.MAX                       | LocalDateTime.MIN                       | false
     LocalDateTime.MIN                       | LocalDateTime.MAX                       | true
   }
@@ -157,6 +151,22 @@ class DateServiceSpec extends Specification {
     where:
     _startCalendar         | _endCalendar           | _response
     Calendar.getInstance() | Calendar.getInstance() | 36
+  }
+
+  def "Count Years anios java8 #_dateStart"() {
+    given:
+    LocalDate dateStart = _dateStart
+    LocalDate dateEnd = _dateEnd
+    Period response
+    when:
+    response = service.countYearsJava8(dateStart, dateEnd)
+    then:
+    println response.getYears()
+    println response.getMonths()
+    println response.getDays()
+    where:
+    _dateStart                | _dateEnd        | _responseAnios | _responseMonths | _responseDays
+    LocalDate.of(1984, 5, 19) | LocalDate.now() | 36             | 8               | 17
   }
 
 }
