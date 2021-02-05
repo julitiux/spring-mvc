@@ -18,4 +18,5 @@ public interface DateService {
   public Period countYearsJava8(LocalDate dateStart, LocalDate dateEnd);
 
   public Date convertStringToDate(String dateString) throws ParseException;
+  public String formatDateJava7(Date date);
 }
