@@ -8,6 +8,6 @@ public interface HighOrderService {
   public void print(Function<String, String> function, String string);
   public Function<String, String> printWithFunction(String string);
 
-  public List<String> filter(List<String> list, Predicate<String> predicate, String string);
+  public List<String> filter(List<String> list, String string);
 
 }
