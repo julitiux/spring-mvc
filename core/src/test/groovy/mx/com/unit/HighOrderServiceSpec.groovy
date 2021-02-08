@@ -4,12 +4,13 @@ import mx.com.service.HighOrderServiceImpl
 import spock.lang.Shared
 import spock.lang.Specification
 
+
 class HighOrderServiceSpec extends Specification {
 
   @Shared
     service = new HighOrderServiceImpl()
 
-  def "Implement unit test with high order"() {
+  def "Implement unit test with high order with #_string | #_function"() {
     given:
     String string = _string
     def function = _function
@@ -18,6 +19,7 @@ class HighOrderServiceSpec extends Specification {
     where:
     _string        | _function
     "Hola Inmundo" | service.convertToUpperCase
+    "Hola Inmundo" | service.convertToLowerCase
   }
 
 }
