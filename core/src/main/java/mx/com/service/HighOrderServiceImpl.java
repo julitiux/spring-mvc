@@ -24,11 +24,11 @@ public class HighOrderServiceImpl implements HighOrderService{
   }
 
   @Override
-  public List<String> filter(List<String> list, Predicate<String> predicate, String string) {
-    return list.stream().filter(predicate).collect(Collectors.toList());
+  public List<String> filter(List<String> list, String string) {
+    return list.stream().filter(filterString(string)).collect(Collectors.toList());
   }
 
-  public Predicate<String> filterString(String string){
+  private Predicate<String> filterString(String string){
     return it -> it.contains(string);
   }
 
