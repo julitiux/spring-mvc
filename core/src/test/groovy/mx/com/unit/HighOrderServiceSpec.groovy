@@ -39,18 +39,19 @@ class HighOrderServiceSpec extends Specification {
   }
 
 
-  def ""() {
+  def "Implementation unit test that recive a list and string, I delete the consumer xD"() {
     given:
     List<String> list = ['uno', 'dos', 'tres', 'cuatro']
     String string = _string
     List<String> response
     when:
-    response = service.filter(list, _predicate, 'u')
+    response = service.filter(list, string)
     then:
-    println response
+    response == _response
     where:
-    _string | _predicate
-    "Hola"  | it -> it.contains(string)
+    _string | _response
+    "u"     | ['uno', 'cuatro']
+
   }
 
 }
