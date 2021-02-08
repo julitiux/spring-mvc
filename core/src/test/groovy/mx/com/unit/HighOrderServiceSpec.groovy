@@ -27,12 +27,15 @@ class HighOrderServiceSpec extends Specification {
   def "Implementation a unit test to access a lambda with the method apply"() {
     given:
     String string = _string
-    def otherString = _otherString
-    expect:
-    println service.printWithFunction(string)
+    String otherString = _otherString
+    String response = _response
+    when:
+    response = service.printWithFunction(string).apply(otherString)
+    then:
+    response == _response
     where:
-    _string | _otherString
-    "Hola"  | "Inmundo"
+    _string | _otherString | _response
+    "Hola"  | "Inmundo"    | "Hola Inmundo"
   }
 
 }
