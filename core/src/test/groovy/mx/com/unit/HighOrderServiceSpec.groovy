@@ -54,4 +54,18 @@ class HighOrderServiceSpec extends Specification {
 
   }
 
+  def "Implementation unit test that recive a list and string, I return the consumer xD"() {
+    given:
+    List<String> list = ['uno', 'dos', 'tres', 'cuatro']
+    String string = _string
+    List<String> response
+    when:
+    response = service.filter(list, string, {println it})
+    then:
+    response == _response
+    where:
+    _string | _response
+    "u"     | ['uno', 'dos', 'tres', 'cuatro']
+  }
+
 }
