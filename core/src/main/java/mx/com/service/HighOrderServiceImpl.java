@@ -17,7 +17,7 @@ public class HighOrderServiceImpl implements HighOrderService{
 
   @Override
   public Function<String, String> printWithFunction(String string) {
-    return (String it) -> string + it;
+    return (String it) -> string + " " + it;
   }
 
 }
