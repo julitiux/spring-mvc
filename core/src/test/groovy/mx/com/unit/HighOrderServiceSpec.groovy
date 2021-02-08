@@ -38,4 +38,19 @@ class HighOrderServiceSpec extends Specification {
     "Hola"  | "Inmundo"    | "Hola Inmundo"
   }
 
+
+  def ""() {
+    given:
+    List<String> list = ['uno', 'dos', 'tres', 'cuatro']
+    String string = _string
+    List<String> response
+    when:
+    response = service.filter(list, _predicate, 'u')
+    then:
+    println response
+    where:
+    _string | _predicate
+    "Hola"  | it -> it.contains(string)
+  }
+
 }
