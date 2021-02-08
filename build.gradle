@@ -106,38 +106,11 @@ project(':web') {
     baseName = "${nameProject}"
   }
 
-  task glassfishDeploy(type:Exec) {
-    workingDir "/u01/glassfish4/glassfish/bin"
-    def currentDirectory = System.getProperty("user.dir")
-    def completePath = "${currentDirectory}/${nameProject}.war"
-    commandLine "./asadmin", "--port", "4849", "--user", "admin", "--passwordfile", "/home/tomcat/glassfish_password", "deploy", "--force", "true", "${completePath}"
-  }
-
   task settingLog4jProperties(type:Copy){
     from configurationDir
     into "src/main/resources/"
     include "log4j-${currentEnvironment}-${nameProject}.properties"
     rename { String fileName -> fileName.replace("-${currentEnvironment}-${nameProject}", '') }
-  }
-
-  remotes {
-    qa {
-      host = '10.31.22.22'
-      user = 'root'
-      identity = file("${System.properties['user.home']}/.ssh/id_rsa")
-    }
-  }
-
-  task glassfishDeployQA {
-    doLast {
-      ssh.run {
-        session(remotes.qa) {
-          put from: "${nameProject}.war", into: "."
-          put from: "deploy.sh", into: "."
-          execute "sh deploy.sh"
-        }
-      }
-    }
   }
 
   build.dependsOn 'copyWar'
