@@ -23,4 +23,16 @@ class HighOrderServiceSpec extends Specification {
     "HOLA INMUNDO" | service.convertToLowerCase
   }
 
+
+  def "Implementation a unit test to access a lambda with the method apply"() {
+    given:
+    String string = _string
+    def otherString = _otherString
+    expect:
+    println service.printWithFunction(string)
+    where:
+    _string | _otherString
+    "Hola"  | "Inmundo"
+  }
+
 }
