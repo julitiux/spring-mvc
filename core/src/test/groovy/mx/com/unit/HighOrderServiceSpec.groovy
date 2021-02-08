@@ -3,8 +3,9 @@ package mx.com.unit
 import mx.com.service.HighOrderServiceImpl
 import spock.lang.Shared
 import spock.lang.Specification
+import spock.lang.Unroll
 
-
+@Unroll
 class HighOrderServiceSpec extends Specification {
 
   @Shared
