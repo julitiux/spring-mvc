@@ -4,4 +4,6 @@ import java.util.function.Function;
 
 public interface HighOrderService {
   public void print(Function<String, String> function, String string);
+  public Function<String, String> printWithFunction(String string);
+
 }
