@@ -20,7 +20,7 @@ class HighOrderServiceSpec extends Specification {
     where:
     _string        | _function
     "Hola Inmundo" | service.convertToUpperCase
-    "Hola Inmundo" | service.convertToLowerCase
+    "HOLA INMUNDO" | service.convertToLowerCase
   }
 
 }
