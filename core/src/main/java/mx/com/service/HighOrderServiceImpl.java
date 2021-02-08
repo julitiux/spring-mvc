@@ -15,4 +15,9 @@ public class HighOrderServiceImpl implements HighOrderService{
     System.out.println(function.apply(string));
   }
 
+  @Override
+  public Function<String, String> printWithFunction(String string) {
+    return (String it) -> string + it;
+  }
+
 }
