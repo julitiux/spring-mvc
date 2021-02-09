@@ -8,11 +8,19 @@ class JavaRxServiceSpec extends Specification {
 
   @Shared
   service = new JavaRxServiceImpl()
+  @Shared
+  List<String> list1 = ['uno', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete', 'ocho', 'nueve', 'diez']
+  @Shared
+  List<String> list2 = ['unow', 'dosw', 'tresw', 'cuatrow', 'cincow', 'seisw', 'sietew', 'ochow', 'nuevew', 'diezw']
 
   def"Implementation unit test of the method observableRx"(){
-    given:
-    List<String> list = ['uno', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete', 'ocho', 'nueve', 'diez']
     expect:
-    service.observableRx(list)
+    service.observableRx(list1)
   }
+
+  def"Implementation unit test of the method observableRx with two lists"(){
+    expect:
+    service.observableRx(list1,list2,'o')
+  }
+
 }
