@@ -15,4 +15,9 @@ class NashornServiceSpec extends Specification {
     service.callFunctions();
   }
 
+  def "Implementing a unit test of call of function from a File. Just his execution"() {
+    expect:
+    service.callFunctionsWithFileJs();
+  }
+
 }
