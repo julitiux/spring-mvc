@@ -19,8 +19,14 @@ class JavaRxServiceSpec extends Specification {
   }
 
   def "Implementation unit test of the method observableRx with two lists"() {
-    expect:
-    service.observableRx(list1, list2, 'o')
+    given:
+    List<String> response = []
+    when:
+    response = service.observableRx(list1, list2, 'o')
+    then:
+    response == _response
+    where:
+    _response << [['uno', 'dos', 'cuatro', 'cinco', 'ocho', 'unow', 'dosw', 'cuatrow', 'cincow', 'ochow']]
   }
 
   def "Implementation unit test of the method observableRx with two lists but now with lambdas"() {
