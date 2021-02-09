@@ -32,7 +32,7 @@ public class JavaRxServiceImpl implements JavaRxService {
       @Override
       public void accept(String s) throws Exception {
         if(s.contains(string))
-          returnList.add(string);
+          returnList.add(s);
       }
     });
 
