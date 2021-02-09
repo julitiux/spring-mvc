@@ -39,4 +39,19 @@ public class JavaRxServiceImpl implements JavaRxService {
     return returnList;
   }
 
+  @Override
+  public List<String> observableRxWithLambdas(List<String> firstList, List<String> secondList, String string) {
+    Observable<String> observable1 = Observable.fromIterable(firstList);
+    Observable<String> observable2 = Observable.fromIterable(secondList);
+
+    List<String> returnList = new ArrayList<>();
+
+    Observable.merge(observable1, observable2).subscribe(it -> {
+      if(it.contains(string))
+        returnList.add(it);
+    });
+
+    return returnList;
+  }
+
 }
