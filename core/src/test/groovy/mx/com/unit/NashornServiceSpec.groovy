@@ -20,4 +20,13 @@ class NashornServiceSpec extends Specification {
     service.callFunctionPrintWithFile();
   }
 
+  def "Implementing a unit test of call the calcular method from a File. Just his execution"() {
+    given:
+    Double respone
+    when:
+    respone = service.callFunctionsWithFile();
+    then:
+    respone == 40.0
+  }
+
 }
