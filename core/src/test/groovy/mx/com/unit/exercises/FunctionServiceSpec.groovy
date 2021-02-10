@@ -40,4 +40,17 @@ class FunctionServiceSpec extends Specification {
     '        ' | 16
   }
 
+  def "Test the method listToMap of String not null with two Functions introducint the apply"() {
+    given:
+    List<String> list = _list
+    Map<String, Integer> response = [:]
+    when:
+    response = service.listToMap(list)
+    then:
+    response == _response
+    where:
+    _list                                              | _response
+    ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'] | ['1': 1, '2': 1, '3': 1, '4': 1, '5': 1, '6': 1, '7': 1, '8': 1, '9': 1, '0': 1]
+  }
+
 }
