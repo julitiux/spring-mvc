@@ -7,7 +7,7 @@ public class FunctionServiceImpl implements FunctionService {
   private Function<String, Integer> function = x -> x.length();
 
   @Override
-  public Integer lenght(String string) {
+  public Integer functionLenght(String string) {
     return function.apply(string);
   }
 
