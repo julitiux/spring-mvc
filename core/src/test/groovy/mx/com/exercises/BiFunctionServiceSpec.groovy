@@ -73,4 +73,21 @@ class BiFunctionServiceSpec extends Specification {
   }
 
 
+  def "pow To String usgin a BiFunction with a Function like parameters"() {
+    given:
+    Integer firstNumber = _firstNumber
+    Integer secondNumber = _secondNumber
+    String response
+    when:
+    response = service.powToString(firstNumber, secondNumber)
+    then:
+    response == _response
+    where:
+    _firstNumber | _secondNumber | _response
+    1            | 2             | '1.0'
+    1000         | 5             | '1.0E15'
+    1000         | 50            | '1.0E150'
+  }
+
+
 }
