@@ -1,4 +1,4 @@
-package mx.com.unit.exercises
+package mx.com.exercises
 
 import mx.com.exercises.services.FunctionServiceImpl
 import spock.lang.Shared
