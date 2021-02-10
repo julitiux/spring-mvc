@@ -38,6 +38,11 @@ public class NashornServiceImpl implements NashornService {
 
   @Override
   public void implementInterface() throws Exception {
+    scriptEngine.eval(new FileReader("src/main/resources/js/exampleJS.js"));
+    Object object = scriptEngine.get("hiloImplementation");
+    Runnable runnable = invocable.getInterface(object, Runnable.class);
 
+    Thread thread = new Thread(runnable);
+    thread.start();
   }
 }
