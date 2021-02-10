@@ -18,13 +18,18 @@ public class NashornServiceImpl implements NashornService {
   }
 
   @Override
-  public void callFunctions() throws Exception {
+  public void callFunctionPrint() throws Exception {
     scriptEngine.eval("print('JS desde Java')");
   }
 
   @Override
-  public void callFunctionsWithFileJs() throws Exception {
+  public void callFunctionPrintWithFile() throws Exception {
     scriptEngine.eval(new FileReader("src/main/resources/js/exampleJS.js"));
+  }
+
+  @Override
+  public void callFunctionsWithFile() throws Exception {
+
   }
 
   @Override

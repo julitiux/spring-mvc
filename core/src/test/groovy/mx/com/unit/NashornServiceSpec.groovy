@@ -12,12 +12,12 @@ class NashornServiceSpec extends Specification {
 
   def "Implementing a unit test of call of function with nashorn. Just his execution"() {
     expect:
-    service.callFunctions();
+    service.callFunctionPrint();
   }
 
   def "Implementing a unit test of call of function from a File. Just his execution"() {
     expect:
-    service.callFunctionsWithFileJs();
+    service.callFunctionPrintWithFile();
   }
 
 }
