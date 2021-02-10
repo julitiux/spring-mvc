@@ -41,4 +41,20 @@ class BiFunctionServiceSpec extends Specification {
     1000         | 50            | 1.0E150
   }
 
+  def "sum a pair number and convert a list of one number"() {
+    given:
+    Integer firstNumber = _firstNumber
+    Integer secondNumber = _secondNumber
+    List<String> response = []
+    when:
+    response = service.addNumbersAndTurnAList(firstNumber, secondNumber)
+    then:
+    response == _response
+    where:
+    _firstNumber | _secondNumber | _response
+    1            | 2             | ['3']
+    1000         | 5             | ['1005']
+    1000         | 50            | ['1050']
+  }
+
 }
