@@ -32,5 +32,13 @@ public class FunctionServiceImpl implements FunctionService {
     }
     return result;
   }
-  
+
+  private Map<String, Integer> convertAnotherListToMap (List<String> list, Function <String,Integer> function){
+    Map<String, Integer> result = new HashMap<>();
+    for(String element : list){
+      result.put(element, function.apply(element));
+    }
+    return result;
+  }
+
 }
