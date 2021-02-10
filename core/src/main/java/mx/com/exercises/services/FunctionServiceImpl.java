@@ -22,7 +22,7 @@ public class FunctionServiceImpl implements FunctionService {
 
   @Override
   public Map<String, Integer> listToMap(List<String> list) {
-    return convertListToMap(list, functionLength);
+    return convertAnotherListToMap(list, functionLength);
   }
 
   private <T, R> Map<T, R> convertListToMap (List<T> list, Function <T,R> function){
