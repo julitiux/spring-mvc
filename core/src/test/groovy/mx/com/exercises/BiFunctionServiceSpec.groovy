@@ -32,7 +32,6 @@ class BiFunctionServiceSpec extends Specification {
     when:
     response = service.pow(firstNumber, secondNumber)
     then:
-    println response
     response == _response
     where:
     _firstNumber | _secondNumber | _response
@@ -56,5 +55,22 @@ class BiFunctionServiceSpec extends Specification {
     1000         | 5             | ['1005']
     1000         | 50            | ['1050']
   }
+
+  def "Pow and then turn to String  usgin a BiFunction with a Function"() {
+    given:
+    Integer firstNumber = _firstNumber
+    Integer secondNumber = _secondNumber
+    String response
+    when:
+    response = service.powAndTurnString(firstNumber, secondNumber)
+    then:
+    response == _response
+    where:
+    _firstNumber | _secondNumber | _response
+    1            | 2             | '1.0'
+    1000         | 5             | '1.0E15'
+    1000         | 50            | '1.0E150'
+  }
+
 
 }
