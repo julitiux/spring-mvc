@@ -10,4 +10,6 @@ public interface BiFunctionService {
 
   public String powAndTurnString(Integer firstNumber, Integer secondNumber);
 
+  public String powToString(Integer firstNumber, Integer secondNumber);
+
 }
