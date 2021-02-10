@@ -8,4 +8,6 @@ public interface BiFunctionService {
   public Double pow(Integer firstNumber, Integer secondNumber);
   public List<String> addNumbersAndTurnAList(Integer firstNumber, Integer secondNumber);
 
+  public String powAndTurnString(Integer firstNumber, Integer secondNumber);
+
 }
