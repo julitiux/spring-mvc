@@ -1,4 +1,4 @@
-package mx.com.exercises;
+package mx.com.exercises.services;
 
 import java.util.HashMap;
 import java.util.List;
