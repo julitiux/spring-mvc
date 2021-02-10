@@ -29,4 +29,9 @@ class NashornServiceSpec extends Specification {
     respone == 40.0
   }
 
+  def "Implementing a unit test of call implementInterface method, to simulate a Thread"() {
+    expect:
+    service.implementInterface();
+  }
+
 }
