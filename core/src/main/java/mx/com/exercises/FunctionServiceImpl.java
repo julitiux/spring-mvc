@@ -1,5 +1,8 @@
 package mx.com.exercises;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
 
 public class FunctionServiceImpl implements FunctionService {
@@ -17,4 +20,17 @@ public class FunctionServiceImpl implements FunctionService {
     return functionLength.andThen(functionMultiplyBy2).apply(string);
   }
 
+  @Override
+  public Map<String, Integer> listToMap(List<String> list) {
+    return convertListToMap(list, functionLength);
+  }
+
+  private <T, R> Map<T, R> convertListToMap (List<T> list, Function <T,R> function){
+    Map<T,R> result = new HashMap<>();
+    for(T t : list){
+      result.put(t, function.apply(t));
+    }
+    return result;
+  }
+  
 }
