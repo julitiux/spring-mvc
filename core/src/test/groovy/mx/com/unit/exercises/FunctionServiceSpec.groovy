@@ -24,4 +24,20 @@ class FunctionServiceSpec extends Specification {
     ''         | 0
     '        ' | 8
   }
+
+  def "Test the andThen of String not null with two Functions"() {
+    given:
+    String string = _string
+    Integer response
+    when:
+    response = service.functionAndThen(string)
+    then:
+    response == _response
+    where:
+    _string    | _response
+    'test'     | 8
+    ''         | 0
+    '        ' | 16
+  }
+
 }
