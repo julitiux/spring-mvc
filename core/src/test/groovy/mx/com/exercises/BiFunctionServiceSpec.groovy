@@ -1,5 +1,6 @@
 package mx.com.exercises
 
+import mx.com.exercises.domain.Gps
 import mx.com.exercises.services.BiFunctionServiceImpl
 import spock.lang.Shared
 import spock.lang.Specification
@@ -87,6 +88,23 @@ class BiFunctionServiceSpec extends Specification {
     1            | 2             | '1.0'
     1000         | 5             | '1.0E15'
     1000         | 50            | '1.0E150'
+  }
+
+
+  def "Generate a new Gps with BiFunction"() {
+    given:
+    String firstString = _firstString
+    String secondString = _secondString
+    def response
+    when:
+    response = service.newGps(firstString, secondString)
+    then:
+    response instanceof Gps
+    where:
+    _firstString | _secondString
+    "40.741895"  | "-73.989308"
+    "40.741895"  | "-73.989308"
+
   }
 
 
