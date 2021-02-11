@@ -1,5 +1,7 @@
 package mx.com.exercises.services;
 
+import mx.com.exercises.domain.Gps;
+
 import java.util.List;
 
 public interface BiFunctionService {
@@ -12,4 +14,5 @@ public interface BiFunctionService {
 
   public String powToString(Integer firstNumber, Integer secondNumber);
 
+  public Gps newGps(String latitude, String longitude);
 }
