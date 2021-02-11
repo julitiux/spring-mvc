@@ -1,5 +1,7 @@
 package mx.com.exercises.services;
 
+import mx.com.exercises.domain.Gps;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.BiFunction;
@@ -43,6 +45,15 @@ public class BiFunctionServiceImpl implements BiFunctionService {
                              BiFunction<Integer, Integer, Double> pow,
                              Function<Double, String> toString) {
     return pow.andThen(toString).apply(integer1, integer2);
+  }
+
+  @Override
+  public Gps newGps(String latitude, String longitude) {
+    return factory(latitude, longitude, Gps::new);
+  }
+
+  private Gps factory(String latitude, String longitude, BiFunction<String, String, Gps> biFunction) {
+    return biFunction.apply(latitude, longitude);
   }
 
 }
