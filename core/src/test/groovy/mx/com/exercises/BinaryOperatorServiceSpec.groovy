@@ -1,5 +1,6 @@
 package mx.com.exercises
 
+import mx.com.exercises.domain.Developer
 import mx.com.exercises.services.BinaryOperatorServiceImpl
 import spock.lang.Shared
 import spock.lang.Specification
@@ -23,6 +24,21 @@ class BinaryOperatorServiceSpec extends Specification {
     1            | 2             | 3
     1000         | 1000          | 2000
 
+  }
+
+
+  def "Find a Developer using the method findMaxSalary, too much code for a search in java"() {
+    given:
+    List<Developer> list = [new Developer('uno', 11000.0),
+                            new Developer('dos', 20000.0),
+                            new Developer('tres', 31000.0),
+                            new Developer('cuatro', 41000.0),
+                            new Developer('cinco', 51000.0)]
+    Developer response
+    when:
+    response = service.findMaxSalary(list)
+    then:
+    response.salary == 51000.0
   }
 
 }
