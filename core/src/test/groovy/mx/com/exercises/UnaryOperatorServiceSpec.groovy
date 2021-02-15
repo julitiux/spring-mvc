@@ -28,4 +28,17 @@ class UnaryOperatorServiceSpec extends Specification {
 
   }
 
+  def "Implement a unit test usign a UnaryOperator like parameter"() {
+    given:
+    List<Integer> list = _list
+    List<Integer> response
+    when:
+    response = service.unaryOperatorLikeArgument(list)
+    then:
+    response == _response
+    where:
+    _list                       | _response
+    [1, 2, 3, 4, 5, 6, 7, 8, 9] | [2, 4, 6, 8, 10, 12, 14, 16, 18]
+  }
+
 }
