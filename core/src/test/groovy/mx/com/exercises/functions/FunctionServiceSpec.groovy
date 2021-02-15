@@ -1,6 +1,6 @@
-package mx.com.exercises
+package mx.com.exercises.functions
 
-import mx.com.exercises.services.FunctionServiceImpl
+import mx.com.exercises.functions.services.FunctionServiceImpl
 import spock.lang.Shared
 import spock.lang.Specification
 

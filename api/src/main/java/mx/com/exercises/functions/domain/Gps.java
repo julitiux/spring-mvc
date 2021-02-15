@@ -1,4 +1,4 @@
-package mx.com.exercises.domain;
+package mx.com.exercises.functions.domain;
 
 public class Gps {
 

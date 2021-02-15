@@ -1,6 +1,7 @@
-package mx.com.exercises.services;
+package mx.com.exercises.functions.services;
 
-import mx.com.exercises.domain.Developer;
+import mx.com.exercises.functions.domain.Developer;
+import mx.com.exercises.functions.services.BinaryOperatorService;
 
 import java.util.Comparator;
 import java.util.List;

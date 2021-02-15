@@ -1,4 +1,6 @@
-package mx.com.exercises.services;
+package mx.com.exercises.functions.services;
+
+import mx.com.exercises.functions.services.UnaryOperatorService;
 
 import java.util.List;
 import java.util.function.Function;

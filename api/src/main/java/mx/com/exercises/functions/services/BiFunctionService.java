@@ -1,6 +1,6 @@
-package mx.com.exercises.services;
+package mx.com.exercises.functions.services;
 
-import mx.com.exercises.domain.Gps;
+import mx.com.exercises.functions.domain.Gps;
 
 import java.util.List;
 
