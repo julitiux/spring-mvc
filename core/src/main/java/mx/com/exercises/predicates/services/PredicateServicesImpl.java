@@ -43,7 +43,7 @@ public class PredicateServicesImpl implements PredicateServices {
     return filter(list, it -> it.startsWith("A"));
   }
 
-  List<String> filter (List<String> list, Predicate<String> predicate){
+  <T> List<T> filter (List<T> list, Predicate<T> predicate){
     return list.stream().filter(predicate::test).collect(Collectors.toList());
   }
 
