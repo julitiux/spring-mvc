@@ -37,4 +37,14 @@ public class PredicateServicesImpl implements PredicateServices {
     return list.stream().filter(startWithZ.negate()).collect(Collectors.toList());
   }
 
+  //::This method it could be generic
+  @Override
+  public List<String> predicateTest(List<String> list) {
+    return filter(list, it -> it.startsWith("A"));
+  }
+
+  List<String> filter (List<String> list, Predicate<String> predicate){
+    return list.stream().filter(predicate::test).collect(Collectors.toList());
+  }
+
 }
