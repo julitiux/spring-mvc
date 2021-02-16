@@ -13,27 +13,27 @@ public class PredicateServicesImpl implements PredicateServices {
   Predicate<String> startWithZ = it -> it.startsWith("Z");
 
   @Override
-  public List<Integer> filter(List<Integer> list) {
+  public List<Integer> predicate(List<Integer> list) {
     return list.stream().filter(it -> it >= 5).collect(Collectors.toList());
   }
 
   @Override
-  public List<Integer> filterWithPredicate(List<Integer> list) {
+  public List<Integer> predicateFilter(List<Integer> list) {
     return list.stream().filter(majorOrEqualsThanFive).collect(Collectors.toList());
   }
 
   @Override
-  public List<Integer> filterWithPredicateAnd(List<Integer> list) {
+  public List<Integer> predicateFilterAndAnd(List<Integer> list) {
     return list.stream().filter(majorThanFiveAndMinorThanTen).collect(Collectors.toList());
   }
 
   @Override
-  public List<String> filterWithPredicateOr(List<String> list) {
+  public List<String> predicateFilterAndOr(List<String> list) {
     return list.stream().filter(lengthEqualsThree.and(startWithZ)).collect(Collectors.toList());
   }
 
   @Override
-  public List<String> filterWithPredicateNegate(List<String> list) {
+  public List<String> predicateFilterAndNegate(List<String> list) {
     return list.stream().filter(startWithZ.negate()).collect(Collectors.toList());
   }
 
