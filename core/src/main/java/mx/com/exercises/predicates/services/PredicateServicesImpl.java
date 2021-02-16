@@ -32,4 +32,9 @@ public class PredicateServicesImpl implements PredicateServices {
     return list.stream().filter(lengthEqualsThree.and(startWithZ)).collect(Collectors.toList());
   }
 
+  @Override
+  public List<String> filterWithPredicateNegate(List<String> list) {
+    return list.stream().filter(startWithZ.negate()).collect(Collectors.toList());
+  }
+
 }
