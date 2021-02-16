@@ -7,4 +7,5 @@ public interface PredicateServices {
   public List<Integer> filterWithPredicate(List<Integer> list);
   public List<Integer> filterWithPredicateAnd(List<Integer> list);
   public List<String> filterWithPredicateOr(List<String> list);
+  public List<String> filterWithPredicateNegate(List<String> list);
 }
