@@ -1,10 +1,19 @@
 package mx.com.exercises.predicates.services;
 
+import mx.com.exercises.predicates.domain.Hosting;
+import mx.com.exercises.predicates.repository.HostingRespository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+@Service
 public class PredicateServicesImpl implements PredicateServices {
+
+  @Autowired
+  HostingRespository hostingRespository;
 
   Predicate<Integer> majorOrEqualsThanFive = it -> it >= 5;
   Predicate<Integer> majorThanFiveAndMinorThanTen = it -> it > 5 && 10 < it;
@@ -43,8 +52,22 @@ public class PredicateServicesImpl implements PredicateServices {
     return filter(list, it -> it.startsWith("A"));
   }
 
-  <T> List<T> filter (List<T> list, Predicate<T> predicate){
+  <T> List<T> filter(List<T> list, Predicate<T> predicate) {
     return list.stream().filter(predicate::test).collect(Collectors.toList());
+  }
+
+  @Override
+  public List<Hosting> filterHosting(List<Hosting> list) {
+    return hostingRespository.filter(list, it -> it.getName().startsWith("A"));
+  }
+
+  @Override
+  public List<Hosting> filterHostingFriendly(List<Hosting> list) {
+    return hostingRespository.filter(list, otherPredicateMethod());
+  }
+
+  Predicate<Hosting> otherPredicateMethod() {
+    return it -> it.getName().startsWith("A");
   }
 
 }
