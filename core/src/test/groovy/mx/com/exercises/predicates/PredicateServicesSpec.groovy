@@ -52,4 +52,14 @@ class PredicateServicesSpec extends Specification {
     response == stringList.findAll { it.length() == 3 && it.startsWith("Z") }
   }
 
+  def "Filter with a predicate predicateFilterAndNegate"() {
+    given:
+    List<String> response = []
+    when:
+    response = service.predicateFilterAndNegate(stringList)
+    then:
+    response == stringList.findAll { !it.startsWith("Z") }
+  }
+
+
 }
