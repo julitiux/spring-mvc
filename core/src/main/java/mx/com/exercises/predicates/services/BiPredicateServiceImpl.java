@@ -8,6 +8,9 @@ import java.util.function.BiPredicate;
 public class BiPredicateServiceImpl implements BiPredicateService {
 
   BiPredicate<String, Integer> isTheSameSize = (string, size) -> string.length() == size;
+  BiPredicate<String, Integer> isCorrectUrl = (url, size) -> {
+    return url.equalsIgnoreCase("google.com") || size == 0;
+  };
 
   @Override
   public Boolean isTheSameSize(String string, Integer integer) {
