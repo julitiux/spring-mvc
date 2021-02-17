@@ -1,6 +1,6 @@
 package mx.com.exercises.functions
 
-import mx.com.exercises.domain.Gps
+import mx.com.exercises.functions.domain.Gps
 import mx.com.exercises.functions.services.BiFunctionServiceImpl
 import spock.lang.Shared
 import spock.lang.Specification
