@@ -61,5 +61,16 @@ class PredicateServicesSpec extends Specification {
     response == stringList.findAll { !it.startsWith("Z") }
   }
 
+  def "Filter with a predicate test"() {
+    given:
+    List<String> response = []
+    when:
+    response = service.predicateTest(stringList)
+    then:
+    response == stringList.findAll { it.startsWith("A") }
+  }
+
+
+
 
 }
