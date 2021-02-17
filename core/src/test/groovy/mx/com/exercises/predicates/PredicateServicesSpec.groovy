@@ -21,4 +21,14 @@ class PredicateServicesSpec extends Specification {
     then:
     response == integerList.findAll { it >= 5 }
   }
+
+  def "Filter with a predicate majorOrEqualsThanFive"() {
+    given:
+    List<Integer> response = []
+    when:
+    response = service.predicateFilter(integerList)
+    then:
+    response == integerList.findAll { it >= 5 }
+  }
+
 }
