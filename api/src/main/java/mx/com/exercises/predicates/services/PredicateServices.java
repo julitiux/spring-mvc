@@ -1,5 +1,7 @@
 package mx.com.exercises.predicates.services;
 
+import mx.com.exercises.predicates.domain.Hosting;
+
 import java.util.List;
 
 public interface PredicateServices {
@@ -9,4 +11,7 @@ public interface PredicateServices {
   public List<String> predicateFilterAndOr(List<String> list);
   public List<String> predicateFilterAndNegate(List<String> list);
   public List<String> predicateTest(List<String> list);
+
+  public List<Hosting> filterHosting(List<Hosting> list);
+  public List<Hosting> filterHostingFriendly(List<Hosting> list);
 }
