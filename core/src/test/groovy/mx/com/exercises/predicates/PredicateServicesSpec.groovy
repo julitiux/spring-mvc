@@ -12,6 +12,9 @@ class PredicateServicesSpec extends Specification {
   @Shared
   List<Integer> integerList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 
+  @Shared
+  List<String> stringList = ["AAA", "AA", "AAAA", "AAAAAAA", "ZZZ", "Z", "ZZZZ", "ZAAAZAZA"]
+
 
   def "Filter with a predicate"() {
     given:
@@ -38,6 +41,15 @@ class PredicateServicesSpec extends Specification {
     response = service.predicateFilterAndAnd(integerList)
     then:
     response == integerList.findAll { it > 5 && 10 < it }
+  }
+
+  def "Filter with a predicate lengthEqualsThree and startWithZ"() {
+    given:
+    List<String> response = []
+    when:
+    response = service.predicateFilterAndOr(stringList)
+    then:
+    response == stringList.findAll { it.length() == 3 && it.startsWith("Z") }
   }
 
 }
