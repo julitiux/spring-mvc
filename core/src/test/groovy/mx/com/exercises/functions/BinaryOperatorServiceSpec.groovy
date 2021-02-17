@@ -1,6 +1,6 @@
 package mx.com.exercises.functions
 
-import mx.com.exercises.domain.Developer
+import mx.com.exercises.functions.domain.Developer
 import mx.com.exercises.functions.services.BinaryOperatorServiceImpl
 import spock.lang.Shared
 import spock.lang.Specification
