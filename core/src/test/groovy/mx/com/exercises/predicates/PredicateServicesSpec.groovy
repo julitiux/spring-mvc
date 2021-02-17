@@ -88,5 +88,14 @@ class PredicateServicesSpec extends Specification {
     then:
     response == hostingList.findAll { it.name.startsWith("A") }
   }
-  
+
+  def "Filter with hosting Repository.filter send by the method"() {
+    given:
+    List<Hosting> response = []
+    when:
+    response = service.filterHostingFriendly(hostingList)
+    then:
+    response == hostingList.findAll { it.name.startsWith("A") }
+  }
+
 }
