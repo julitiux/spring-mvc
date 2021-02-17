@@ -1,5 +1,6 @@
 package mx.com.exercises.predicates
 
+import mx.com.exercises.predicates.domain.Hosting
 import mx.com.exercises.predicates.services.PredicateServicesImpl
 import spock.lang.Shared
 import spock.lang.Specification
@@ -70,7 +71,22 @@ class PredicateServicesSpec extends Specification {
     response == stringList.findAll { it.startsWith("A") }
   }
 
+  @Shared
+  List<Hosting> hostingList = [
+    new Hosting(1L, "Amazon", "aws.amazon.com"),
+    new Hosting(2L, "Linode", "linode"),
+    new Hosting(3L, "Liquidweb", "liquidweb.com"),
+    new Hosting(4L, "google", "google.com"),
+  ]
 
 
-
+  def "Filter with hosting Repository.filter send the lambda"() {
+    given:
+    List<Hosting> response = []
+    when:
+    response = service.filterHosting(hostingList)
+    then:
+    response == hostingList.findAll { it.name.startsWith("A") }
+  }
+  
 }
