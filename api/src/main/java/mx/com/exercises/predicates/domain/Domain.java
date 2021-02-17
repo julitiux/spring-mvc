@@ -3,9 +3,9 @@ package mx.com.exercises.predicates.domain;
 public class Domain {
 
   String name;
-  String score;
+  Integer score;
 
-  public Domain(String name, String score) {
+  public Domain(String name, Integer score) {
     this.name = name;
     this.score = score;
   }
@@ -18,11 +18,11 @@ public class Domain {
     this.name = name;
   }
 
-  public String getScore() {
+  public Integer getScore() {
     return score;
   }
 
-  public void setScore(String score) {
+  public void setScore(Integer score) {
     this.score = score;
   }
 }
