@@ -2,6 +2,7 @@ package mx.com.exercises.predicates
 
 import mx.com.exercises.predicates.domain.Hosting
 import mx.com.exercises.predicates.services.PredicateServicesImpl
+import spock.lang.Ignore
 import spock.lang.Shared
 import spock.lang.Specification
 
@@ -80,6 +81,7 @@ class PredicateServicesSpec extends Specification {
   ]
 
 
+  @Ignore
   def "Filter with hosting Repository.filter send the lambda"() {
     given:
     List<Hosting> response = []
@@ -89,6 +91,7 @@ class PredicateServicesSpec extends Specification {
     response == hostingList.findAll { it.name.startsWith("A") }
   }
 
+  @Ignore
   def "Filter with hosting Repository.filter send by the method"() {
     given:
     List<Hosting> response = []
