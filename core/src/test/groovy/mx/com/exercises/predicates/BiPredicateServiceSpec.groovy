@@ -1,10 +1,11 @@
 package mx.com.exercises.predicates
 
-
 import mx.com.exercises.predicates.services.BiPredicateServiceImpl
 import spock.lang.Shared
 import spock.lang.Specification
+import spock.lang.Unroll
 
+@Unroll
 class BiPredicateServiceSpec extends Specification {
 
   @Shared
