@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 public class BiPredicateServiceImpl implements BiPredicateService {
 
   BiPredicate<String, Integer> isTheSameSize = (string, size) -> string.length() == size;
-  BiPredicate<String, Integer> isCorrectUrl = (url, size) -> {
+  public BiPredicate<String, Integer> isCorrectUrl = (url, size) -> {
     return url.equalsIgnoreCase("google.com") || size == 0;
   };
 
@@ -21,8 +21,8 @@ public class BiPredicateServiceImpl implements BiPredicateService {
   }
 
   @Override
-  public Boolean isCorrectTheDomain(List<Domain> domainList, BiPredicate<String, Integer> biPredicate) {
-    return null;
+  public List<Domain> isCorrectTheDomain(List<Domain> domainList, BiPredicate<String, Integer> biPredicate) {
+    return filter(domainList, biPredicate);
   }
 
   List<Domain> filter(List<Domain> domainList, BiPredicate<String, Integer> biPredicate){
