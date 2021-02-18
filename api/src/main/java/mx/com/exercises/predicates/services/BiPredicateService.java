@@ -7,5 +7,5 @@ import java.util.function.BiPredicate;
 
 public interface BiPredicateService {
   public Boolean isTheSameSize(String string, Integer integer);
-  public Boolean isCorrectTheDomain(List<Domain> domainList, BiPredicate<String, Integer> biPredicate);
+  public List<Domain> isCorrectTheDomain(List<Domain> domainList, BiPredicate<String, Integer> biPredicate);
 }
