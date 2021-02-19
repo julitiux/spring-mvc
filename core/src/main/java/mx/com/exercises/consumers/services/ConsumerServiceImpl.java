@@ -12,4 +12,9 @@ public class ConsumerServiceImpl implements ConsumerService {
     list.forEach(System.out::println);
   }
 
+  @Override
+  public void usingAConsumer(List<String> list) {
+    list.stream().forEach(print);
+  }
+
 }
