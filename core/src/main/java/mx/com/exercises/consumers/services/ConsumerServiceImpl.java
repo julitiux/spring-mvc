@@ -6,6 +6,7 @@ import java.util.function.Consumer;
 public class ConsumerServiceImpl implements ConsumerService {
 
   Consumer<String> print = it -> System.out.println(it);
+  Consumer<Integer> printIntegers = (Integer it) -> System.out.println(it);
 
   @Override
   public void outPrintln(List<String> list) {
@@ -19,7 +20,7 @@ public class ConsumerServiceImpl implements ConsumerService {
 
   @Override
   public void usingAConsumerWithAInteger(List<Integer> list) {
-    list.stream().forEach();
+    forEach(list, printIntegers);
   }
 
   void forEach(List<Integer> list, Consumer<Integer> consumer){
