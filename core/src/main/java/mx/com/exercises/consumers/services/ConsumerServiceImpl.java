@@ -17,4 +17,15 @@ public class ConsumerServiceImpl implements ConsumerService {
     list.stream().forEach(print);
   }
 
+  @Override
+  public void usingAConsumerWithAInteger(List<Integer> list) {
+    list.stream().forEach();
+  }
+
+  void forEach(List<Integer> list, Consumer<Integer> consumer){
+    for(Integer number: list){
+      consumer.accept(number);
+    }
+  }
+
 }
