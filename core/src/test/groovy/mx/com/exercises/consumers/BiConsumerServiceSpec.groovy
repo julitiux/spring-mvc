@@ -9,7 +9,15 @@ class BiConsumerServiceSpec extends Specification {
   @Shared
     service = new BiConsumerServiceImpl()
 
-  def "unit test using a CiConsumer with accept"() {
+  def "unit test using a BiConsumer with accept"() {
+    given:
+    Integer integerOne = 1
+    Integer integerTwo = 2
+    expect:
+    service.highOrderFunction(integerOne, integerTwo)
+  }
+
+  def "unit test using a BiConsumer like a parameter in another method"() {
     given:
     Integer integerOne = 1
     Integer integerTwo = 2
