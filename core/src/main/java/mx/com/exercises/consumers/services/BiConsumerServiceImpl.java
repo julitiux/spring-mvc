@@ -28,21 +28,4 @@ public class BiConsumerServiceImpl implements BiConsumerService {
     map.forEach((k, v) -> System.out.println(k + ":" + v));
   }
 
-  default <K,V> void forEach(BiConsumer<? super K, ? super V> action) {
-    Objects.requireNonNull(action);
-    for (Map.Entry<K, V> entry : Map.entrySet()) {
-      K k;
-      V v;
-      try {
-        k = entry.getKey();
-        v = entry.getValue();
-      } catch (IllegalStateException ise) {
-        // this usually means the entry is no longer in the map.
-        throw new ConcurrentModificationException(ise);
-      }
-      action.accept(k, v);
-    }
-  }
-
-
 }
