@@ -25,4 +25,15 @@ class BiConsumerServiceSpec extends Specification {
     service.highOrderFunction(integerOne, integerTwo)
   }
 
+  def "unit test using a BiConsumer like a parameter in another method, I try to rewrite, but I cant"() {
+    given:
+    Map<Integer, String> map = [1: 'uno',
+                                2: 'dos',
+                                3: 'tres',
+                                4: 'cuatro',
+                                5: 'cinco']
+    expect:
+    service.mapForEach(map)
+  }
+
 }
