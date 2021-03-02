@@ -9,7 +9,7 @@ class SuplierServiceSpec extends Specification {
   @Shared
     service = new SuplierServiceImpl()
 
-  def ""() {
+  def "Implement a unit test using a Supplier. the Supplier dont sent data and just give something"() {
     expect:
     service.nowDateFormat()
   }
