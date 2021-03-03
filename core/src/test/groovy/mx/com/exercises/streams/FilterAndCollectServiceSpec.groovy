@@ -1,5 +1,6 @@
 package mx.com.exercises.streams
 
+import mx.com.exercises.streams.domain.Person
 import mx.com.exercises.streams.services.FilterAndCollectServiceImpl
 import spock.lang.Shared
 import spock.lang.Specification
@@ -28,6 +29,24 @@ class FilterAndCollectServiceSpec extends Specification {
     ['1', '2', '3', '4', '5', '6', '7', '8', '9']                                       | '1'     | ['1']
     ['uno', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete', 'ocho', 'nueve', 'diez'] | 'u'     | ['uno']
     ['uno', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete', 'ocho', 'nueve', 'diez'] | 'c'     | ['cuatro', 'cinco']
+  }
+
+  def "filter by #_age from a #_personList"() {
+    given:
+    List<Person> personList = _personList
+    Integer age = _age
+    List<Person> response = []
+    when:
+    response = service.filterPersonByAge(personList, age)
+    then:
+    response*.name == _response*.name
+    where:
+    _personList                            | _age | _response
+    [new Person('Julio', 'j.ramirez', 36),
+     new Person('Gils', 'g.reyes', 36),
+     new Person('Gaio', 'j.gonzalez', 32)] | 34   | [new Person('Julio', 'j.ramirez', 36),
+                                                     new Person('Gils', 'g.reyes', 36)]
+
   }
 
 
