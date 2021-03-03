@@ -22,4 +22,9 @@ public class FilterAndCollectServiceImpl implements FilterAndCollectService {
     return personList.stream().filter(person -> person.getAge().equals(age)).findAny().orElse(null);
   }
 
+  @Override
+  public List<String> getListOfUsernamePerson(List<Person> personList) {
+    return personList.stream().map(Person::getName).collect(Collectors.toList());
+  }
+
 }
