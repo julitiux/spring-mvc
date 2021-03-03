@@ -3,13 +3,15 @@ package mx.com.exercises.streams
 import mx.com.exercises.streams.services.FilterAndCollectServiceImpl
 import spock.lang.Shared
 import spock.lang.Specification
+import spock.lang.Unroll
 
+@Unroll
 class FilterAndCollectServiceSpec extends Specification {
 
   @Shared
     service = new FilterAndCollectServiceImpl()
 
-  def ""() {
+  def "Using a list with stream filter start with #_filter in the list #_stringList"() {
     given:
     List<String> stringList = _stringList
     List<String> response = []
@@ -17,13 +19,15 @@ class FilterAndCollectServiceSpec extends Specification {
     when:
     response = service.filterStartWith(stringList, filter)
     then:
-    println response
     response == _response
     where:
     _stringList                                                                         | _filter | _response
-    ['uno', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete', 'ocho', 'nueve', 'diez'] | 'u'     | ['uno']
+    []                                                                                  | ''      | []
+    []                                                                                  | null    | []
     []                                                                                  | 'z'     | []
-
+    ['1', '2', '3', '4', '5', '6', '7', '8', '9']                                       | '1'     | ['1']
+    ['uno', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete', 'ocho', 'nueve', 'diez'] | 'u'     | ['uno']
+    ['uno', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete', 'ocho', 'nueve', 'diez'] | 'c'     | ['cuatro', 'cinco']
   }
 
 
