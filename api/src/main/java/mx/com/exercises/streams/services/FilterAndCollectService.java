@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface FilterAndCollectService {
   public List<String> filterStartWith(List<String> stringList, String filter);
-  public List<Person> filterPersonByAge(List<Person> stringList, Integer age);
+  public List<Person> filterPersonByAge(List<Person> personList, Integer age);
 }
