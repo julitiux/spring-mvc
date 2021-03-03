@@ -50,4 +50,26 @@ class FilterAndCollectServiceSpec extends Specification {
   }
 
 
+  def "Filter a personList #_personList by age #_age using findAny and orElse"() {
+    given:
+    List<Person> personList = _personList
+    Integer age = _age
+    Person response
+    when:
+    response = service.filterPersonUsingAny(personList, age)
+    then:
+    response?.name == _response?.name
+    where:
+    _personList                            | _age | _response
+    [new Person('Julio', 'j.ramirez', 36),
+     new Person('Gils', 'g.reyes', 36),
+     new Person('Gaio', 'j.gonzalez', 32)] | 32   | new Person('Gaio', 'j.gonzalez', 32)
+    [new Person('Julio', 'j.ramirez', 36),
+     new Person('Gils', 'g.reyes', 36),
+     new Person('Gaio', 'j.gonzalez', 32)] | 34   | null
+    []                                     | 32   | null
+
+  }
+
+
 }
