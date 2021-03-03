@@ -1,6 +1,5 @@
 package mx.com.exercises.streams
 
-
 import mx.com.exercises.streams.services.FilterAndCollectServiceImpl
 import spock.lang.Shared
 import spock.lang.Specification
@@ -12,12 +11,19 @@ class FilterAndCollectServiceSpec extends Specification {
 
   def ""() {
     given:
-    List<String> stringList = ['uno', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete', 'ocho', 'nueve', 'diez']
+    List<String> stringList = _stringList
     List<String> response = []
+    String filter = _filter
     when:
-    response = service.filterStartWith(stringList, 'u')
+    response = service.filterStartWith(stringList, filter)
     then:
-    response
+    println response
+    response == _response
+    where:
+    _stringList                                                                         | _filter | _response
+    ['uno', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete', 'ocho', 'nueve', 'diez'] | 'u'     | ['uno']
+    []                                                                                  | 'z'     | []
+
   }
 
 
