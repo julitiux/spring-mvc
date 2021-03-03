@@ -72,4 +72,22 @@ class FilterAndCollectServiceSpec extends Specification {
   }
 
 
+  def "Get a List of names from the #_personList"() {
+    given:
+    List<Person> personList = _personList
+    List<String> response
+    when:
+    response = service.getListOfUsernamePerson(personList)
+    then:
+    response == _personList*.name  //USING GROOVY
+    where:
+    _personList << [[new Person('Julio', 'j.ramirez', 36),
+                     new Person('Gils', 'g.reyes', 36),
+                     new Person('Gaio', 'j.gonzalez', 32)],
+                    [new Person('Julio', 'j.ramirez', 36),
+                     new Person('Gils', 'g.reyes', 36)],
+                    []]
+
+  }
+
 }
