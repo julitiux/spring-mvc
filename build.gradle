@@ -117,4 +117,3 @@ project(':web') {
   build.dependsOn 'copyWar'
   processResources.dependsOn "settingLog4jProperties"
 }
-insert
